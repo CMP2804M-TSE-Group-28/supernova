@@ -20,10 +20,10 @@ public class PlayerMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Update()
-    {
-        // print("Movement is " + moveVector);
-    }
+    // private void Update()
+    // {
+    //     print("Movement is " + moveVector);
+    // }
     
     private void FixedUpdate()
     {
