@@ -9,6 +9,9 @@ public class EnemyAnimator : MonoBehaviour
     [Header("Master Script")]
     public EnemyController Controller;
 
+    [Header("Sprites")]
+    public Transform MainSprite;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -17,8 +20,13 @@ public class EnemyAnimator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        //LookAtPlayer();
+    }
+
+    private void LookAtPlayer()
+    {
+        MainSprite.LookAt(Controller.PlayerEntity.transform.position);
     }
 }

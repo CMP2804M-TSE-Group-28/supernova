@@ -9,6 +9,9 @@ public class EnemyBehaviour : MonoBehaviour
     [Header("Master Script")]
     public EnemyController Controller;
 
+    [Header("Player Target")]
+    public Transform PlayerTarget;
+
     // PRIVATE DECLARATIONS
     private float _distanceToPlayer;
 
@@ -31,12 +34,20 @@ public class EnemyBehaviour : MonoBehaviour
     private void LookAtPlayer()
     {
         // Looks at the player's position
-        this.transform.LookAt(Controller.PlayerEntity.transform.position);
+        Vector3 _playerPos = new Vector3(Controller.PlayerEntity.transform.position.x,
+            0f,
+            Controller.PlayerEntity.transform.position.z);
 
-        //if (Controller.IsRanged == true)
-        //{
-        //    Controller.Ranged.ShotOrigin.transform.LookAt(Controller.PlayerEntity.transform.position);
-        //}
+        this.transform.LookAt(_playerPos);
+
+        if (Controller.IsRanged == true)
+        {
+            Vector3 _playerHeadPos = new Vector3(0f,
+            Controller.PlayerTarget.position.y,
+            0f);
+
+            Controller.Ranged.ShotOrigin.transform.LookAt(_playerHeadPos);
+        }
     }
 
     private void FindDistanceToPlayer()

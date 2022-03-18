@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     public EnemyBehaviour Behaviour;
     public EnemyMovement Movement;
     public EnemyRays Rays;
+    public EnemyAnimator Animator;
     public EnemyMelee Melee;
     public EnemyMeleeCharge MeleeCharge;
     public EnemyMeleeChargedAttack MeleeChargedAttack;
@@ -28,6 +29,9 @@ public class EnemyController : MonoBehaviour
     // Hidden public declarations
     [HideInInspector]
     public GameObject PlayerEntity;
+
+    [HideInInspector]
+    public Transform PlayerTarget;
 
     [HideInInspector]
     public bool IsRanged = false;
@@ -52,6 +56,7 @@ public class EnemyController : MonoBehaviour
         Behaviour = this.GetComponent<EnemyBehaviour>();
         Movement = this.GetComponent<EnemyMovement>();
         Rays = this.GetComponent<EnemyRays>();
+        Animator = this.GetComponent<EnemyAnimator>();
 
         // Role script - Melee or Ranged is required for the AI to do anything
         Melee = this.GetComponent<EnemyMelee>();
@@ -71,8 +76,10 @@ public class EnemyController : MonoBehaviour
             PlayerEntity = GameObject.FindGameObjectWithTag("Player");
         }
 
+        PlayerTarget = GameObject.Find("PlayerTarget").transform;
+
         // Sets appropriate bools to true if the script exists
-        if(Melee != null)
+        if (Melee != null)
         {
             IsMelee = true;
         }

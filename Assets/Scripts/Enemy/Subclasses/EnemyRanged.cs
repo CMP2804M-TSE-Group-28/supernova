@@ -12,7 +12,7 @@ public class EnemyRanged : MonoBehaviour
     [Header("Ranged Related Components")]
     public Transform ShotOrigin;
 
-    [Header("Ranged Attack Type")]
+    [Header("Ranged Attack Type - NOT IMPLEMENTED YET, ONLY RAYCAST")]
     public bool IsProjectile;
 
     public ProjectileInfo Info;
@@ -22,10 +22,10 @@ public class EnemyRanged : MonoBehaviour
     public float AttackDelay;
     public float AttackDamage;
 
-    [Range(20, 100)]
-    public float BaseAccuracy;
+    //[Range(20, 100)]
+    //public float BaseAccuracy;
 
-    [Range(0, 1)]
+    [Range(0, 5)]
     public float AccuracySpread;
 
     // PRIVATE DECLARATIONS
@@ -45,6 +45,7 @@ public class EnemyRanged : MonoBehaviour
     {
         // Get all available scripts on the entity
         Controller = this.GetComponent<EnemyController>();
+        
     }
 
     // Update is called once per frame
@@ -75,11 +76,19 @@ public class EnemyRanged : MonoBehaviour
     private void CalculateAccuracy()
     {
         // Calculate base spread
-        float xSpread = Random.Range(-AccuracySpread, AccuracySpread);
-        float ySpread = Random.Range(-AccuracySpread, AccuracySpread);
+        float _xSpread = Random.Range(-AccuracySpread, AccuracySpread);
+        float _ySpread = Random.Range(-AccuracySpread, AccuracySpread);
+
+        // SCRAPPED FOR THE TIME BEING - COULD BE REWORKDED LATER IF I RE-GROW MY BRAIN CELLS
+        //float _xAccuracy = (BaseAccuracy / 100 - 1f) + _xSpread;
+        //float _yAccuracy = (BaseAccuracy / 100 - 1f) + _ySpread;
 
         // Apply spread to foward transform and a new vector of spread
-        _rayShotDirection = ShotOrigin.transform.forward + new Vector3(xSpread, ySpread, 0f);
+        _rayShotDirection = Controller.PlayerTarget.position - ShotOrigin.position;
+
+        Vector3 _accuracySpread = new Vector3(_xSpread, _ySpread, 0f);
+
+        _rayShotDirection += _accuracySpread;
     }
 
     public void RangedAttack()

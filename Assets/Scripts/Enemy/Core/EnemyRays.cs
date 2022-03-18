@@ -35,7 +35,7 @@ public class EnemyRays : MonoBehaviour
     {
         // Check whether any layer blocks line to player - Head to Head contact
         PlayerSightBlocked = Physics.Linecast(HeadRay.position,
-            PlayerPostion.gameObject.GetComponent<PlayerCamera>().HeadSphere.position,
+            Controller.PlayerTarget.position,
             PlayerMask);
 
 
@@ -43,13 +43,13 @@ public class EnemyRays : MonoBehaviour
         if(PlayerSightBlocked == false)
         {
             Debug.DrawLine(HeadRay.position,
-                PlayerPostion.gameObject.GetComponent<PlayerCamera>().HeadSphere.position,
+                Controller.PlayerTarget.position,
                 Color.green);
         }
         else
         {
             Debug.DrawLine(HeadRay.position,
-                PlayerPostion.gameObject.GetComponent<PlayerCamera>().HeadSphere.position,
+                Controller.PlayerTarget.position,
                 Color.red);
         }
     }
