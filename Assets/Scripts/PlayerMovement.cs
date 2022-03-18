@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,8 +7,9 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
     private Vector3 moveVector;
+    private bool canJump = false;
 
     /// <summary>
     /// Exposed config.
@@ -17,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // private void Update()
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Apply Movement onto player, accounting for drag and momentum.
-        rigidbody.AddRelativeForce(moveVector * movementSpeed);
+        rb.AddRelativeForce(moveVector * movementSpeed);
     }
 
     // Player Movement (Called from the Input Action)
@@ -42,12 +44,32 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        canJump = true;
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        canJump = false;
+    }
+
     /// <summary>
     /// Called on jump event.
     /// </summary>
     private void OnJump(InputValue input)
     {
         // Add upwards force.
-        rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (canJump)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+        
+    }
+
+    private void OnCrouch()
+    {
+        Debug.Log("Crouch");
+        // 2.327121
     }
 }
