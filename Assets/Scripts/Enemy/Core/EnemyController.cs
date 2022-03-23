@@ -7,8 +7,7 @@ public class EnemyController : MonoBehaviour
 {
     // PUBLIC DECLARATIONS
     // Scripts
-    [Header("Entity Scripts")]
-    public EnemyBehaviour Behaviour;
+    [Header("Entity Scripts")] public EnemyBehaviour Behaviour;
     public EnemyMovement Movement;
     public EnemyRays Rays;
     public EnemyAnimator Animator;
@@ -18,58 +17,44 @@ public class EnemyController : MonoBehaviour
     public EnemyRanged Ranged;
     public EnemyRangedChargedAttack RangedChargedAttack;
 
-
     // Components
-    [Header("Components")]
-    public NavMeshAgent NavAgent;
-
-    [Header("Layer Masks")]
-    public LayerMask PlayerMask;
+    [Header("Components")] public NavMeshAgent NavAgent;
+    public Rigidbody AIRigidbody;
+    [Header("Layer Masks")] public LayerMask PlayerMask;
 
     // Hidden public declarations
-    [HideInInspector]
-    public GameObject PlayerEntity;
-
-    [HideInInspector]
-    public Transform PlayerTarget;
-
-    [HideInInspector]
-    public bool IsRanged = false;
-
-    [HideInInspector]
-    public bool IsMelee = false;
-
-    [HideInInspector]
-    public bool CanChargeRangedAttack = false;
-
-    [HideInInspector]
-    public bool CanChargeMeleeAttack = false;
-
-    [HideInInspector]
-    public bool CanMeleeCharge = false;
+    [HideInInspector] public GameObject PlayerEntity;
+    [HideInInspector] public Transform PlayerTarget;
+    [HideInInspector] public bool IsRanged = false;
+    [HideInInspector] public bool IsMelee = false;
+    [HideInInspector] public bool CanChargeRangedAttack = false;
+    [HideInInspector] public bool CanChargeMeleeAttack = false;
+    [HideInInspector] public bool CanMeleeCharge = false;
 
     // Start is called before the first frame update
     private void Start()
     {
         // Get all available scripts on the entity
         // Core scripts
-        Behaviour = this.GetComponent<EnemyBehaviour>();
-        Movement = this.GetComponent<EnemyMovement>();
-        Rays = this.GetComponent<EnemyRays>();
-        Animator = this.GetComponent<EnemyAnimator>();
+        Behaviour = GetComponent<EnemyBehaviour>();
+        Movement = GetComponent<EnemyMovement>();
+        Rays = GetComponent<EnemyRays>();
+        Animator = GetComponent<EnemyAnimator>();
 
         // Role script - Melee or Ranged is required for the AI to do anything
-        Melee = this.GetComponent<EnemyMelee>();
-        Ranged = this.GetComponent<EnemyRanged>();
+        Melee = GetComponent<EnemyMelee>();
+        Ranged = GetComponent<EnemyRanged>();
 
         // Extra scripts - These can be added to spice up the enemy behaviour
-        MeleeCharge = this.GetComponent<EnemyMeleeCharge>();
-        MeleeChargedAttack = this.GetComponent<EnemyMeleeChargedAttack>();
+        MeleeCharge = GetComponent<EnemyMeleeCharge>();
+        MeleeChargedAttack = GetComponent<EnemyMeleeChargedAttack>();
 
-        RangedChargedAttack = this.GetComponent<EnemyRangedChargedAttack>();
+        RangedChargedAttack = GetComponent<EnemyRangedChargedAttack>();
 
         // Get components
-        NavAgent = this.GetComponent<NavMeshAgent>();
+        NavAgent = GetComponent<NavMeshAgent>();
+        AIRigidbody = GetComponent<Rigidbody>();
+        
 
         if(PlayerEntity == null)
         {
