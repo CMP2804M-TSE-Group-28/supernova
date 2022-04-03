@@ -13,7 +13,7 @@
 
 - All commit messages must conform to [Convential Commits](https://www.conventionalcommits.org/) standard.
 
-- In summary commits should look like:
+- In summary, commits should look like this:
 
 ```
 <type>[optional scope (in brackets)]: <description>
@@ -24,13 +24,21 @@
 ```
 
 
-### 🌴 Branching
+### 🌿 Branches
 
-- Each thing added must be done so in a **separate branch** to prevent merge conflits.
+![example flow of branches](Screenshots/gitflow.drawio.svg)
 
-- Branches must be named in the format of `yourname/feature` (e.g. `cooperj/player-movement`). These can be incremented by appending numbers to the end.
+This repo makes use of branching to maintain multiple different versions of the project.
 
-- To create a new branch run the cmdlet `git checkout -b yourname/feature`.
+The `main` branch is the *default branch* that is opened when visiting github.com or when cloning the repo. The `main` branch must **always** be ready for testing, and only contain known good code. This can also be referred to as the `release` branch.
+
+Hotfixes are **quick fixes** to the `main` branch. These should be prefixed with `hotfix/` and then a short description or reference of what is being fixed.
+
+The `QA` branch is where game testing will be completed from. This branch contains code that has been reviewed once, for accuracy/quality. This is used for internal testing. The QA branch is labelled `qa` and **must not** be deleted. They are given an incrementing identification number so they can be referred to easily.
+
+The addition of features must be completed on a **feature branch** (these may also be referred to as a development branch), multiple people can work on one feature if required (directly or with more branching). These can be prefixed in the format of; `yourname/`, `feat/` or `dev/`.
+
+**NB**: To create a new branch run the cmdlet `git checkout -b yourname/feature` which can be incremented by appending numbers to the end.
 
 ### 👓 Code Reviews
 
@@ -46,7 +54,7 @@
 
 - Once the review has been approved, the branch **must only** be merged by PR Assignee.
 
-- PRs will always be into the `main` branch.
+- PRs will always be in the `main` branch.
 
 - Branches and PRs should be **locked** and **deleted** after merging. *This is only to be done by the PR Assignee.*
 
@@ -64,14 +72,3 @@
 
 - While working through an issue, you must **update your progress on the Notion Tracker**.
 
-### 🔀 Pull Requests
-
-- Pull requests must follow the same format as an issue.
-
-- PRs should be **squashed and merged**.
-
-### 🌍 The Main Branch
-
-- The `main` branch is the *default branch* that is opened when visiting github.com or when cloning the repo.
-
-- The `main` branch must **always** be ready for testing, and only contain known good code.
