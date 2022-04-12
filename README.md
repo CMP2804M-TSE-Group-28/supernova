@@ -2,15 +2,18 @@
 
 ✨ This repo is for the main Unity project 
 
+⚠️ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+
+🤵 This project is submitted in part for the module CMP2804M (Team Software Engineering) at the University of Lincoln, UK.
+
+## 🔧 Configuration
+
 | Property      | Value       |
 |---------------|-------------|
 | Unity Version | 2020.3.25f1 |
 | LTS           | Yes         |
 
-## Best Practises
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
-
+## 🦐 Best Practises
 
 ### 🗣️ Commit Messages
 
