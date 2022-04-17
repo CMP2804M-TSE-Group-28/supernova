@@ -6,11 +6,11 @@ public class EnemyBehaviour : MonoBehaviour
 {
     // PUBLIC DECLARATIONS
     // Scripts
-    [Header("Master Script")]
-    public EnemyController Controller;
+    [Header("Master Script")] public EnemyController Controller;
 
-    [Header("Player Target")]
-    public Transform PlayerTarget;
+    [Header("Player Target")] public Transform PlayerTarget;
+
+    [HideInInspector] public Vector3 DirectionToPlayer;
 
     // PRIVATE DECLARATIONS
     private float _distanceToPlayer;
@@ -21,7 +21,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void Start()
     {
         // Get all available scripts on the entity
-        Controller = this.GetComponent<EnemyController>();
+        Controller = GetComponent<EnemyController>();
     }
 
     // Update is called once per frame
@@ -29,6 +29,12 @@ public class EnemyBehaviour : MonoBehaviour
     {
         FindDistanceToPlayer();
         LookAtPlayer();
+    }
+
+    public Vector3 FindDirectionToPlayer()
+    {
+        Vector3 _dirToPlayer = (transform.position - Controller.PlayerEntity.transform.position).normalized;
+        return _dirToPlayer;
     }
 
     private void LookAtPlayer()
@@ -60,6 +66,46 @@ public class EnemyBehaviour : MonoBehaviour
         if (Controller.IsMelee)
         {
             // Checks the distance, whether a melee attack is happening and if line of sight isn't broken
+
+            if (Controller.Rays.PlayerSightBlocked == false)
+            {
+                // Checks if the enemy can do melee charges and whether it's in good range 
+                if (Controller.CanMeleeCharge &&
+                    _distanceToPlayer > Controller.Melee.AttackDistance &&
+                    _distanceToPlayer <= Controller.MeleeCharge.ChargeDistance)
+                {
+                    // Calls the melee charge function
+                    Debug.Log("Calling Melee Charge");
+                    Controller.MeleeCharge.ExecuteChargeAttack();
+                }
+                else
+                {
+                    // Lets the nav agent move again
+                    Controller.NavAgent.isStopped = false;
+                }
+
+                if (Controller.CanChargeMeleeAttack)
+                {
+
+                }
+
+                if(_distanceToPlayer <= Controller.Melee.AttackDistance)
+                {
+                    Debug.Log("Is in melee distance");
+                    // Stops the nav agent and sets attacking melee to true
+                    Controller.NavAgent.isStopped = true;
+                    _isAttackingMelee = true;
+
+                    // Call a melee attack function
+                    Controller.Melee.MeleeAttack();
+                }
+                else
+                {
+                    // Lets the nav agent move again, sets melee attack to false
+                    Controller.NavAgent.isStopped = false;
+                    _isAttackingMelee = false;
+                }
+
             if (_distanceToPlayer <= Controller.Melee.AttackDistance && 
                 Controller.Rays.PlayerSightBlocked == false)
             {
@@ -70,6 +116,7 @@ public class EnemyBehaviour : MonoBehaviour
                 // Call a melee attack function
                 Controller.Melee.MeleeAttack();
                 Debug.Log("Is in melee distance");
+
             }
             else
             {
