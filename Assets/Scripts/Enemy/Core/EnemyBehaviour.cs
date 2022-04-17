@@ -66,6 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (Controller.IsMelee)
         {
             // Checks the distance, whether a melee attack is happening and if line of sight isn't broken
+
             if (Controller.Rays.PlayerSightBlocked == false)
             {
                 // Checks if the enemy can do melee charges and whether it's in good range 
@@ -104,6 +105,18 @@ public class EnemyBehaviour : MonoBehaviour
                     Controller.NavAgent.isStopped = false;
                     _isAttackingMelee = false;
                 }
+
+            if (_distanceToPlayer <= Controller.Melee.AttackDistance && 
+                Controller.Rays.PlayerSightBlocked == false)
+            {
+                // Stops the nav agent and sets attacking melee to true
+                Controller.NavAgent.isStopped = true;
+                _isAttackingMelee = true;
+
+                // Call a melee attack function
+                Controller.Melee.MeleeAttack();
+                Debug.Log("Is in melee distance");
+
             }
             else
             {

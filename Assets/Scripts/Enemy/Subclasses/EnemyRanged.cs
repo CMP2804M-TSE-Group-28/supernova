@@ -15,6 +15,7 @@ public class EnemyRanged : MonoBehaviour
     public ProjectileInfo Info;
 
     [Header("Ranged Stats")] public float AttackDistance;
+
     public float AttackDelay;
     public float AttackDamage;
 

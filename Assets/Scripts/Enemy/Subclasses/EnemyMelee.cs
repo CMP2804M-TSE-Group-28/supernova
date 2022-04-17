@@ -9,6 +9,7 @@ public class EnemyMelee : MonoBehaviour
     [Header("Master Script")] public EnemyController Controller;
 
     [Header("Melee Stats")] public float AttackDistance;
+    
     public float AttackDelay;
     public float AttackDamage;
 
