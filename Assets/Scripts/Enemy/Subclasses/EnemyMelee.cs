@@ -22,11 +22,11 @@ public class EnemyMelee : MonoBehaviour
 
     public void MeleeAttack()
     {
-        
+        // Needs player health function before this can be implemented
     }
 
     public void MeleeThePlayer()
     {
-
+        // Needs player health function before this can be implemented
     }
 }

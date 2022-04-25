@@ -61,7 +61,10 @@ public class EnemyController : MonoBehaviour
             PlayerEntity = GameObject.FindGameObjectWithTag("Player");
         }
 
-        PlayerTarget = GameObject.Find("PlayerTarget").transform;
+        if(PlayerTarget == null)
+        {
+            PlayerTarget = GameObject.Find("PlayerTarget").transform;
+        }
 
         // Sets appropriate bools to true if the script exists
         if (Melee != null)

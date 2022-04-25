@@ -7,7 +7,7 @@ public class ProjectileInfo
 {
     [Header("Projectile Components")]
     public GameObject ProjectilePrefab;
-    public GameObject ProjectileSprite;
+    public Sprite ProjectileSprite;
 
     [Header("Projectile Stats")]
     public float Speed;
@@ -16,5 +16,4 @@ public class ProjectileInfo
 
     [Header("Projectile Type")]
     public bool IsExplosiveType;
-    public bool IsLaserType;
 }

@@ -10,7 +10,7 @@ public class EnemyRanged : MonoBehaviour
 
     [Header("Ranged Related Components")] public Transform ShotOrigin;
 
-    [Header("Ranged Attack Type - NOT IMPLEMENTED YET, ONLY RAYCAST")] public bool IsProjectile;
+    [Header("Ranged Attack Type - Default is set to rays")] public bool IsProjectile;
 
     public ProjectileInfo Info;
 
@@ -101,15 +101,21 @@ public class EnemyRanged : MonoBehaviour
         _attackDelayTimer += Time.deltaTime;
 
         // Checks if the attack timer is more than the set delay
-        if(_attackDelayTimer >= AttackDelay)
+        if(_attackDelayTimer >= AttackDelay &&
+            Controller.Ranged.IsProjectile == false)
         {
             // Calls function to calculate accuracy of the shot, then calls the shoot function
             CalculateAccuracy();
-            ShootThePlayer_Ray();
+            ShootThePlayerRay();
+        }
+        else if(_attackDelayTimer >= AttackDelay &&
+       Controller.Ranged.IsProjectile == true)
+        {
+            ShootThePlayerProjectile();
         }
     }
 
-    public void ShootThePlayer_Ray()
+    public void ShootThePlayerRay()
     {
         // Shoots out the raycast
         if(Physics.Raycast(ShotOrigin.transform.position, _rayShotDirection, out _rayHit, AttackDistance))
@@ -118,7 +124,9 @@ public class EnemyRanged : MonoBehaviour
             if(_rayHit.collider.gameObject.tag == "Player" && _playerCanTakeDamage == true)
             {
                 // Take damage from player
-                Debug.Log("Hit the player");
+                Debug.Log("Hit the player - Ray");
+
+                // Needs player health function before we can substract their health
             }
 
             // Debug the ray
@@ -126,6 +134,22 @@ public class EnemyRanged : MonoBehaviour
 
             // Reset the delaytimer
             _attackDelayTimer = 0f;
+
+            Debug.Log("Shot the player - Ray");
         }
+    }
+
+    public void ShootThePlayerProjectile()
+    {
+        GameObject _projectile = Instantiate(Controller.Ranged.Info.ProjectilePrefab,
+            Controller.Ranged.ShotOrigin.position,
+            Controller.Ranged.ShotOrigin.rotation,
+            transform);
+
+        _projectile.GetComponent<ProjectileController>().GetProjectileInfo(transform.gameObject);
+
+        _attackDelayTimer = 0f;
+
+        Debug.Log("Shot the player - Projectile");
     }
 }

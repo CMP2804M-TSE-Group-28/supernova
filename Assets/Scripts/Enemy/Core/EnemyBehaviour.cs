@@ -39,13 +39,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void LookAtPlayer()
     {
-        // Looks at the player's position
-        Vector3 _playerPos = new Vector3(Controller.PlayerEntity.transform.position.x,
-            0f,
-            Controller.PlayerEntity.transform.position.z);
-
-        this.transform.LookAt(_playerPos);
-
         if (Controller.IsRanged == true)
         {
             Vector3 _playerHeadPos = new Vector3(0f,
