@@ -49,8 +49,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (Controller.IsRanged == true)
         {
             Vector3 _playerHeadPos = new Vector3(0f,
-            Controller.PlayerTarget.position.y,
-            0f);
+                Controller.PlayerTarget.position.y,
+                0f);
 
             Controller.Ranged.ShotOrigin.transform.LookAt(_playerHeadPos);
         }
@@ -86,10 +86,9 @@ public class EnemyBehaviour : MonoBehaviour
 
                 if (Controller.CanChargeMeleeAttack)
                 {
-
                 }
 
-                if(_distanceToPlayer <= Controller.Melee.AttackDistance)
+                if (_distanceToPlayer <= Controller.Melee.AttackDistance)
                 {
                     Debug.Log("Is in melee distance");
                     // Stops the nav agent and sets attacking melee to true
@@ -106,48 +105,48 @@ public class EnemyBehaviour : MonoBehaviour
                     _isAttackingMelee = false;
                 }
 
-            if (_distanceToPlayer <= Controller.Melee.AttackDistance && 
-                Controller.Rays.PlayerSightBlocked == false)
-            {
-                // Stops the nav agent and sets attacking melee to true
-                Controller.NavAgent.isStopped = true;
-                _isAttackingMelee = true;
-
-                // Call a melee attack function
-                Controller.Melee.MeleeAttack();
-                Debug.Log("Is in melee distance");
-
-            }
-            else
-            {
-                // Lets the nav agent move again, sets melee attack to false
-                Controller.NavAgent.isStopped = false;
-                _isAttackingMelee = false;
-            }
-        }
-
-        // Checks if the enemy can shoot
-        if (Controller.IsRanged)
-        {
-            // Checks the distance, whether a melee attack is happening and if line of sight isn't broken
-            if (_distanceToPlayer <= Controller.Ranged.AttackDistance &&
-                _isAttackingMelee == false &&
-                Controller.Rays.PlayerSightBlocked == false)
-            {
-                // Stops the nav agent
-                Controller.NavAgent.isStopped = true;
-
-                // Call a ranged attack function
-                Controller.Ranged.RangedAttack();
-                Debug.Log("Is in ranged distance");
-            }
-            else
-            {
-                // Checks that melee attack is false
-                if(_isAttackingMelee == false)
+                if (_distanceToPlayer <= Controller.Melee.AttackDistance &&
+                    Controller.Rays.PlayerSightBlocked == false)
                 {
-                    // Lets the nav agent move again
+                    // Stops the nav agent and sets attacking melee to true
+                    Controller.NavAgent.isStopped = true;
+                    _isAttackingMelee = true;
+
+                    // Call a melee attack function
+                    Controller.Melee.MeleeAttack();
+                    Debug.Log("Is in melee distance");
+                }
+                else
+                {
+                    // Lets the nav agent move again, sets melee attack to false
                     Controller.NavAgent.isStopped = false;
+                    _isAttackingMelee = false;
+                }
+            }
+
+            // Checks if the enemy can shoot
+            if (Controller.IsRanged)
+            {
+                // Checks the distance, whether a melee attack is happening and if line of sight isn't broken
+                if (_distanceToPlayer <= Controller.Ranged.AttackDistance &&
+                    _isAttackingMelee == false &&
+                    Controller.Rays.PlayerSightBlocked == false)
+                {
+                    // Stops the nav agent
+                    Controller.NavAgent.isStopped = true;
+
+                    // Call a ranged attack function
+                    Controller.Ranged.RangedAttack();
+                    Debug.Log("Is in ranged distance");
+                }
+                else
+                {
+                    // Checks that melee attack is false
+                    if (_isAttackingMelee == false)
+                    {
+                        // Lets the nav agent move again
+                        Controller.NavAgent.isStopped = false;
+                    }
                 }
             }
         }
