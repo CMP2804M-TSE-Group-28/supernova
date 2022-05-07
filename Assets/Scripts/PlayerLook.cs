@@ -8,6 +8,8 @@ public class PlayerLook : MonoBehaviour
 
     private Vector2 currentMouseLookVector = Vector2.zero;
 
+    [SerializeField] public float sensitivity = 0.5f;
+
     private void Start() {
         rb = GetComponent<Rigidbody>();
         cm = this.gameObject.GetComponentInChildren<Camera>();
@@ -18,7 +20,7 @@ public class PlayerLook : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.Locked)
         {
             currentMouseLookVector = input.Get<Vector2>();
-            Debug.Log(currentMouseLookVector);
+            this.gameObject.transform.Rotate(0,currentMouseLookVector.x * sensitivity,0);
         }
         
     }
