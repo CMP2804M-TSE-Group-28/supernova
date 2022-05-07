@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,11 +20,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    // private void Update()
-    // {
-    //     print("Movement is " + moveVector);
-    // }
     
     private void FixedUpdate()
     {
