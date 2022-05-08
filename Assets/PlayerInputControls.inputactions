@@ -42,7 +42,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MouseLeft",
+                    "name": "Fire",
                     "type": "Button",
                     "id": "cc450184-dfb6-4765-a621-0703de182e90",
                     "expectedControlType": "Button",
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseLeft",
+                    "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
