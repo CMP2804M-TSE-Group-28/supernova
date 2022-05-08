@@ -118,7 +118,7 @@ public class EnemyRanged : MonoBehaviour
             if(_rayHit.collider.gameObject.tag == "Player" && _playerCanTakeDamage == true)
             {
                 // Take damage from player
-                Debug.Log("Hit the player");
+                // Debug.Log("Hit the player");
             }
 
             // Debug the ray

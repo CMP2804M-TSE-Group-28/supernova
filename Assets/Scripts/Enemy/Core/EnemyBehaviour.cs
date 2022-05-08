@@ -75,7 +75,7 @@ public class EnemyBehaviour : MonoBehaviour
                     _distanceToPlayer <= Controller.MeleeCharge.ChargeDistance)
                 {
                     // Calls the melee charge function
-                    Debug.Log("Calling Melee Charge");
+                    // Debug.Log("Calling Melee Charge");
                     Controller.MeleeCharge.ExecuteChargeAttack();
                 }
                 else
@@ -90,7 +90,7 @@ public class EnemyBehaviour : MonoBehaviour
 
                 if (_distanceToPlayer <= Controller.Melee.AttackDistance)
                 {
-                    Debug.Log("Is in melee distance");
+                    // Debug.Log("Is in melee distance");
                     // Stops the nav agent and sets attacking melee to true
                     Controller.NavAgent.isStopped = true;
                     _isAttackingMelee = true;
@@ -114,7 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
 
                     // Call a melee attack function
                     Controller.Melee.MeleeAttack();
-                    Debug.Log("Is in melee distance");
+                    // Debug.Log("Is in melee distance");
                 }
                 else
                 {
@@ -137,7 +137,7 @@ public class EnemyBehaviour : MonoBehaviour
 
                     // Call a ranged attack function
                     Controller.Ranged.RangedAttack();
-                    Debug.Log("Is in ranged distance");
+                    // Debug.Log("Is in ranged distance");
                 }
                 else
                 {

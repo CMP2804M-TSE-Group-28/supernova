@@ -1,16 +1,21 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-        public virtual string GetName()
+        // Methods
+        public abstract void Fire();
+        
+        // Properties
+        public abstract int GetRemainingAmmo();
+        public abstract string GetName();
+
+        private void Awake()
         {
-            return "name";
+            print($"I'm {GetName()} I have {GetRemainingAmmo()} shots left...");
         }
-    }
-    
-    public class ProjectileShooter : Weapon
-    {
     }
 }
