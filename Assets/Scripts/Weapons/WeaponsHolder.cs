@@ -23,4 +23,12 @@ public class WeaponsHolder : MonoBehaviour
     {
         CurrentWeapon.Fire();
     }
+
+    private void Start()
+    {
+        foreach (Weapon weapon in weapons)
+        {
+            print($"I'm {weapon.WeaponName} I have {weapon.RemainingAmmo} shots...");
+        }
+    }
 }
