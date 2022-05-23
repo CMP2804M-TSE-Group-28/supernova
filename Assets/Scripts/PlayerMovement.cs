@@ -1,6 +1,9 @@
 using System;
+using System.Net;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 /// <summary>
 /// Player movement controller.
@@ -12,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canJump = false;
 
     private Camera cm;
+    private Transform cmTransform;
 
     /// <summary>
     /// Exposed config.
@@ -19,17 +23,21 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce; // Defines the upwards force of a jump. DEFAULT: 30
     public float movementSpeed; // Defines how fast the player moves. DEFAULT: 100
     private Vector2 currentMouseLookVector = Vector2.zero; // Representation of mouse movement.
+    [SerializeField] public bool flippedVerticalLook = false;
     [SerializeField] public float sensitivity = 0.5f; // Mouse sensitivity.
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        cm = this.gameObject.GetComponentInChildren<Camera>();
+        // Grab our GameObjects.
+        rb = GetComponent<Rigidbody>(); // Player body.
+        cm = this.gameObject.GetComponentInChildren<Camera>(); // Camera
+
+        cmTransform = cm.transform;
     }
 
     private void FixedUpdate()
     {
-        // Apply Movement onto player, accounting for drag and momentum.
+        // Apply Movement onto player, given movement speed.
         rb.AddRelativeForce(moveVector * movementSpeed);
     }
 
@@ -39,23 +47,22 @@ public class PlayerMovement : MonoBehaviour
         // Everytime the player moves, capture what they have done, 
         // convert to move vector format, stored as the move vector.
         Vector2 inputVector = input.Get<Vector2>();
-
         moveVector = new Vector3(inputVector.x, 0, inputVector.y);
-
     }
 
+    // This is the worst jumping check I've ever seen in my life.
     private void OnCollisionEnter(Collision collision)
     {
         canJump = true;
     }
-
+    
     private void OnCollisionExit(Collision other)
     {
-        canJump = false;
+        canJump = false; 
     }
 
     /// <summary>
-    /// Called on jump event.
+    /// Called on jump event. Still a bit buggy.
     /// </summary>
     private void OnJump(InputValue input)
     {
@@ -67,41 +74,58 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnCrouch()
-    {
-        Debug.Log("Crouch");
-        // 2.327121
-    }
+    /// <summary>
+    /// Crouching functionality, not yet implemented.
+    /// Don't add NotImplementedException, we don't want the game to crash.
+    /// </summary>
+    //private void OnCrouch()
+    //{
+    //    return;
+    //}
 
+    /// <summary>
+    /// Called whenever a mouse / joystick movement is detected for moving the camera.
+    /// </summary>
+    /// <param name="input"></param>
     public void OnLook(InputValue input)
     {
         // Cursor is locked, we can do mouse movement :)
         if (Cursor.lockState == CursorLockMode.Locked)
         {
-            float posX = input.Get<Vector2>().x * sensitivity;
-            float posY = input.Get<Vector2>().y * sensitivity;
+            Vector2 InputVector = input.Get<Vector2>() * sensitivity; // Make input respective to sensitivity
 
-            // Horizontal camera
-            Vector3 targetRotationX = new Vector3(0.0f, posX);
-            rb.transform.eulerAngles += targetRotationX;
+            rb.transform.Rotate(0.0f, InputVector.x, 0.0f);
+            cm.transform.Rotate(-calculateAllowedLookVectorX(InputVector.y), 0.0f, 0.0f);
 
-            // Vertical camera - with clamping
-            Vector3 targetRotationY = new Vector3(-posY, 0.0f);
-            targetRotationY.y += Mathf.Clamp(targetRotationY.y, 0f, 90f);
-            cm.transform.eulerAngles += targetRotationY;
         }
-
     }
 
+    /// <summary>
+    /// Relieves player of game control.
+    /// </summary>
     private void OnPause()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        if (Cursor.lockState != CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
+    /// <summary>
+    /// Handle Mouse 1, focus game window and lock mouse or firing.
+    /// </summary>
     private void OnFire()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            return; // Don't fire if we're only focusing, too many games forget this.
+        }
+        
+        // Handle firing here, Josh.
+
     }
 }
