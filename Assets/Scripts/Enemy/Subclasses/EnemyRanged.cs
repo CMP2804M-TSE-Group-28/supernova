@@ -10,7 +10,7 @@ public class EnemyRanged : MonoBehaviour
 
     [Header("Ranged Related Components")] public Transform ShotOrigin;
 
-    [Header("Ranged Attack Type - Default is set to rays")] public bool IsProjectile;
+    [Header("Ranged Attack Type - NOT IMPLEMENTED YET, ONLY RAYCAST")] public bool IsProjectile;
 
     public ProjectileInfo Info;
 
@@ -19,12 +19,16 @@ public class EnemyRanged : MonoBehaviour
     public float AttackDelay;
     public float AttackDamage;
 
+    //[Range(20, 100)]
+    //public float BaseAccuracy;
+
     [Range(0, 5)]
     public float AccuracySpread;
 
     // PRIVATE DECLARATIONS
 
     private float _attackDelayTimer = 0f;
+    private float _chargedAttackDelayTimer = 0f;
 
     private Vector3 _rayShotDirection;
     private RaycastHit _rayHit;
@@ -86,26 +90,26 @@ public class EnemyRanged : MonoBehaviour
 
     public void RangedAttack()
     {
+        // Checks if the enemy can preform a charged attack
+        if (Controller.CanChargeRangedAttack == true)
+        {
+            // Adds time to the timer
+            _chargedAttackDelayTimer += Time.deltaTime;
+        }
+
         // Adds time to the base attack timer
         _attackDelayTimer += Time.deltaTime;
 
         // Checks if the attack timer is more than the set delay
-        if(_attackDelayTimer >= AttackDelay &&
-            Controller.Ranged.IsProjectile == false)
+        if(_attackDelayTimer >= AttackDelay)
         {
             // Calls function to calculate accuracy of the shot, then calls the shoot function
             CalculateAccuracy();
-            ShootThePlayerRay();
-        }
-        else if(_attackDelayTimer >= AttackDelay &&
-       Controller.Ranged.IsProjectile == true)
-        {
-            // Shoots an projectile
-            ShootThePlayerProjectile();
+            ShootThePlayer_Ray();
         }
     }
 
-    public void ShootThePlayerRay()
+    public void ShootThePlayer_Ray()
     {
         // Shoots out the raycast
         if(Physics.Raycast(ShotOrigin.transform.position, _rayShotDirection, out _rayHit, AttackDistance))
@@ -114,9 +118,7 @@ public class EnemyRanged : MonoBehaviour
             if(_rayHit.collider.gameObject.tag == "Player" && _playerCanTakeDamage == true)
             {
                 // Take damage from player
-                Debug.Log("Hit the player - Ray");
-
-                // Needs player health function before we can substract their health
+                // Debug.Log("Hit the player");
             }
 
             // Debug the ray
@@ -124,39 +126,6 @@ public class EnemyRanged : MonoBehaviour
 
             // Reset the delaytimer
             _attackDelayTimer = 0f;
-
-            Debug.Log("Shot the player - Ray");
         }
-    }
-
-    public void ShootThePlayerProjectile()
-    {
-        // Insantiates the projectile
-        GameObject _projectile = Instantiate(Controller.Ranged.Info.ProjectilePrefab,
-            ShotOrigin.position,
-            Quaternion.identity);
-
-        // Gets and sets the necessary components in projectile
-        _projectile.GetComponent<ProjectileController>().GetProjectileInfo(transform.gameObject);
-        _projectile.GetComponent<ProjectileMovement>().ShotOrigin = ShotOrigin;
-
-        // Resets the attack delay
-        _attackDelayTimer = 0f;
-
-        if(Controller.CanChargeRangedAttack == true)
-        {
-            // Sets projectile to charged projectile
-            _projectile.GetComponent<ProjectileInfo>().Damage *= Controller.RangedChargedAttack.ChargedDamageMultiplier;
-            _projectile.GetComponent<ProjectileInfo>().Speed *= Controller.RangedChargedAttack.ChargedMoveSpeedMultipler;
-        }
-        else
-        {
-            // Default projectile
-            _projectile.GetComponent<ProjectileInfo>().Damage = Controller.Ranged.Info.Damage;
-            _projectile.GetComponent<ProjectileInfo>().Speed = Controller.Ranged.Info.Speed;
-            _projectile.GetComponent<ProjectileInfo>().DropRate = Controller.Ranged.Info.DropRate;
-        }
-
-        //Debug.Log("Shot the player - Projectile");
     }
 }

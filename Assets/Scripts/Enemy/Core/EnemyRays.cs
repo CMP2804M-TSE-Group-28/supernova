@@ -10,7 +10,7 @@ public class EnemyRays : MonoBehaviour
 
     [Header("Rays")] public Transform HeadRay;
 
-    [Header("Layer Masks")] public LayerMask MapMask;
+    [Header("Layer Masks")] public LayerMask PlayerMask;
 
     [HideInInspector] public bool PlayerSightBlocked;
 
@@ -32,7 +32,8 @@ public class EnemyRays : MonoBehaviour
         // Check whether any layer blocks line to player - Head to Head contact
         PlayerSightBlocked = Physics.Linecast(HeadRay.position,
             Controller.PlayerTarget.position,
-            MapMask);
+            PlayerMask);
+
 
         // Debug lines - Draws rays in color based on sight
         if(PlayerSightBlocked == false)

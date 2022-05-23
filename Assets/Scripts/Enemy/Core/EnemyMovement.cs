@@ -18,18 +18,12 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Controller.IsActive == true)
-        {
-            MoveToPlayer();
-        }
+        MoveToPlayer();
     }
 
     private void MoveToPlayer()
     {
         // Moves the enemy to player position
         Controller.NavAgent.SetDestination(Controller.PlayerEntity.transform.position);
-
-        // Sets nav agent speed
-        Controller.NavAgent.speed = Controller.Speed;
     }
 }

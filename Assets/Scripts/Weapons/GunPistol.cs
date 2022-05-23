@@ -5,6 +5,8 @@ using Weapons;
 
 public class GunPistol : Weapon
 {
+    public Camera cam;
+    
     public Transform shotPoint;
     public GameObject prefabBullet;
 
@@ -14,7 +16,7 @@ public class GunPistol : Weapon
 
     private void Start()
     {
-        RemainingAmmo = 6;
+        RemainingAmmo = 100;
         WeaponName = "Pistol";
     }
 
@@ -29,9 +31,17 @@ public class GunPistol : Weapon
         
             // Create a bullet clone and send it forward.
             GameObject instanceBullet = Instantiate(prefabBullet, shotPoint.position, Quaternion.identity);
-            instanceBullet.GetComponent<Rigidbody>().AddForce(transform.forward * 100f);
+
+            print("Cam Pos");
+            print(cam.transform.rotation);
             
-            // Update Remaining Ammo
+            print("forward");
+            print(transform.forward);
+            
+            Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 500f);
+            instanceBullet.GetComponent<Rigidbody>().AddForce(forward);
+            
+            // Update Remaining Ammo    
             UseAmmo();
         }
         else
