@@ -17,11 +17,9 @@ public class EnemyMeleeCharge : MonoBehaviour
     // PRIVATE DECLARATIONS
     private Vector3 _dirToPlayer;
 
-    private float _settingUpChargeTimer = 0f;
     private float _chargeTimer = 0f;
 
-    private bool _finishedChargeAttack = false;
-    private bool _finishedChargeSetup = false;
+    [HideInInspector] public bool _finishedChargeAttack = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -29,7 +27,6 @@ public class EnemyMeleeCharge : MonoBehaviour
         // Get all available scripts on the entity
         Controller = GetComponent<EnemyController>();
 
-        _settingUpChargeTimer = 0f;
         _chargeTimer = 0f;
         _finishedChargeAttack = true;
     }
@@ -55,31 +52,17 @@ public class EnemyMeleeCharge : MonoBehaviour
         // Find direction to player
         _dirToPlayer = Controller.Behaviour.FindDirectionToPlayer();
 
-        while (_finishedChargeSetup == false)
-        {
-            Debug.Log("Setting Up...");
-            // Execute the 'setting up charge' animation
-            _settingUpChargeTimer += Time.deltaTime;
-
-            Controller.NavAgent.isStopped = true;
-
-            if (_settingUpChargeTimer >= WaitAfterAnimation)
-            {
-                _finishedChargeSetup = true;
-                _settingUpChargeTimer = 0f;
-                Debug.Log("Setup finished");
-            }
-        }
+        yield return new WaitForSeconds(WaitAfterAnimation);
 
         // Preform the charge attack
         Controller.AIRigidbody.AddForce(-_dirToPlayer * (ChargeTravelForce) * 10);
 
         _finishedChargeAttack = true;
 
-        Debug.Log("Finished Charge");
-
         yield return new WaitForSecondsRealtime(1f);
 
         Controller.NavAgent.isStopped = false;
+
+        Debug.Log("Finished Charge");
     }
 }
