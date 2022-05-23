@@ -6,11 +6,10 @@ public class EnemyMelee : MonoBehaviour
 {
     // PUBLIC DECLARATIONS
     // Scripts
-    [Header("Master Script")]
-    public EnemyController Controller;
+    [Header("Master Script")] public EnemyController Controller;
 
-    [Header("Melee Stats")]
-    public float AttackDistance;
+    [Header("Melee Stats")] public float AttackDistance;
+    
     public float AttackDelay;
     public float AttackDamage;
 
@@ -18,18 +17,12 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         // Get all available scripts on the entity
-        Controller = this.GetComponent<EnemyController>();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
+        Controller = GetComponent<EnemyController>();
     }
 
     public void MeleeAttack()
     {
-
+        
     }
 
     public void MeleeThePlayer()

@@ -6,19 +6,16 @@ public class EnemyRanged : MonoBehaviour
 {
     // PUBLIC DECLARATIONS
     // Scripts
-    [Header("Master Script")]
-    public EnemyController Controller;
+    [Header("Master Script")] public EnemyController Controller;
 
-    [Header("Ranged Related Components")]
-    public Transform ShotOrigin;
+    [Header("Ranged Related Components")] public Transform ShotOrigin;
 
-    [Header("Ranged Attack Type - NOT IMPLEMENTED YET, ONLY RAYCAST")]
-    public bool IsProjectile;
+    [Header("Ranged Attack Type - NOT IMPLEMENTED YET, ONLY RAYCAST")] public bool IsProjectile;
 
     public ProjectileInfo Info;
 
-    [Header("Ranged Stats")]
-    public float AttackDistance;
+    [Header("Ranged Stats")] public float AttackDistance;
+
     public float AttackDelay;
     public float AttackDamage;
 
@@ -44,7 +41,7 @@ public class EnemyRanged : MonoBehaviour
     private void Start()
     {
         // Get all available scripts on the entity
-        Controller = this.GetComponent<EnemyController>();
+        Controller = GetComponent<EnemyController>();
         
     }
 
@@ -121,7 +118,7 @@ public class EnemyRanged : MonoBehaviour
             if(_rayHit.collider.gameObject.tag == "Player" && _playerCanTakeDamage == true)
             {
                 // Take damage from player
-                Debug.Log("Hit the player");
+                // Debug.Log("Hit the player");
             }
 
             // Debug the ray
