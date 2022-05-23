@@ -93,10 +93,7 @@ public class PlayerMovement : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.Locked)
         {
             Vector2 InputVector = input.Get<Vector2>() * sensitivity; // Make input respective to sensitivity
-
             rb.transform.Rotate(0.0f, InputVector.x, 0.0f);
-            cm.transform.Rotate(-calculateAllowedLookVectorX(InputVector.y), 0.0f, 0.0f);
-
         }
     }
 
