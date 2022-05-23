@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform player;
     private bool isCrouching = false;
     private float nonCrouchHeight;
-    public float crouchHeight = .8f;
+    public float crouchHeight;
     
     /// <summary>
     /// Exposed config.
@@ -79,11 +79,11 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void OnCrouch()
     {
-        print("is crouching " + isCrouching);
+        isCrouching = !isCrouching;
+        
         if (isCrouching)
         {
             player.localScale = new Vector3(player.localScale.x, crouchHeight, player.localScale.z);
-            isCrouching = true;
         }
         else
         {
