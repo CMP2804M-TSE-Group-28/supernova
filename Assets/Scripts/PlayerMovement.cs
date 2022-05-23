@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public float jumpForce; // Defines the upwards force of a jump. DEFAULT: 30
     public float movementSpeed; // Defines how fast the player moves. DEFAULT: 100
-    private Vector2 currentMouseLookVector = Vector2.zero; // Representation of mouse movement.
-    [SerializeField] public bool flippedVerticalLook = false;
     [SerializeField] public float sensitivity = 0.5f; // Mouse sensitivity.
 
     private void Start()
@@ -74,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Ignore for now.
         return;
-    };
+    }
 
     /// <summary>
     /// Called whenever a mouse / joystick movement is detected for moving the camera.
@@ -114,8 +112,6 @@ public class PlayerMovement : MonoBehaviour
 
             return; // Don't fire if we're only focusing, too many games forget this.
         }
-        
-        // Handle firing here, Josh.
-
+        // TODO: Handle firing here, Josh.
     }
 }
