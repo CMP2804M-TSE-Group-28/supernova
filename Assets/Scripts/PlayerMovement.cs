@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
     private Vector3 moveVector;
-    private bool canJump = false;
 
     private Camera cm;
     private Transform cmTransform;
@@ -38,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         // Apply Movement onto player, given movement speed.
-        rb.AddRelativeForce(moveVector * movementSpeed);
+        rb.AddRelativeForce(moveVector.normalized * (movementSpeed - rb.velocity.magnitude));
     }
 
     // Player Movement (Called from the Input Action)
@@ -50,28 +49,21 @@ public class PlayerMovement : MonoBehaviour
         moveVector = new Vector3(inputVector.x, 0, inputVector.y);
     }
 
-    // This is the worst jumping check I've ever seen in my life.
-    private void OnCollisionEnter(Collision collision)
-    {
-        canJump = true;
-    }
-    
-    private void OnCollisionExit(Collision other)
-    {
-        canJump = false; 
-    }
-
     /// <summary>
     /// Called on jump event. Still a bit buggy.
     /// </summary>
     private void OnJump(InputValue input)
     {
         // Add upwards force.
-        if (canJump)
+        if (IsGrounded())
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
+    }
+    
+    private bool IsGrounded()  {
+        return Physics.Raycast(rb.transform.position, -Vector3.up, 1.5f);
     }
 
     /// <summary>
