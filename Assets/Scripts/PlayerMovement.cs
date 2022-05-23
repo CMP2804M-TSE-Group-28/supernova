@@ -70,10 +70,11 @@ public class PlayerMovement : MonoBehaviour
     /// Crouching functionality, not yet implemented.
     /// Don't add NotImplementedException, we don't want the game to crash.
     /// </summary>
-    //private void OnCrouch()
-    //{
-    //    return;
-    //}
+    private void OnCrouch()
+    {
+        // Ignore for now.
+        return;
+    };
 
     /// <summary>
     /// Called whenever a mouse / joystick movement is detected for moving the camera.
