@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private Camera cm;
     private Transform cmTransform;
 
+    public Transform player;
+    private bool isCrouching = false;
+    private float nonCrouchHeight;
+    public float crouchHeight = .8f;
+    
     /// <summary>
     /// Exposed config.
     /// </summary>
@@ -30,6 +35,10 @@ public class PlayerMovement : MonoBehaviour
         cm = this.gameObject.GetComponentInChildren<Camera>(); // Camera
 
         cmTransform = cm.transform;
+        
+        // Set init non crouching height
+        nonCrouchHeight = player.localScale.y;
+        print("Set the players normal height to " + nonCrouchHeight);
     }
 
     private void FixedUpdate()
@@ -70,8 +79,16 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void OnCrouch()
     {
-        // Ignore for now.
-        return;
+        print("is crouching " + isCrouching);
+        if (isCrouching)
+        {
+            player.localScale = new Vector3(player.localScale.x, crouchHeight, player.localScale.z);
+            isCrouching = true;
+        }
+        else
+        {
+            player.localScale = new Vector3(player.localScale.x, nonCrouchHeight, player.localScale.z);
+        }
     }
 
     /// <summary>
@@ -113,5 +130,6 @@ public class PlayerMovement : MonoBehaviour
             return; // Don't fire if we're only focusing, too many games forget this.
         }
         // TODO: Handle firing here, Josh.
+        // Matt, firing is handled in the weapons holder.
     }
 }
