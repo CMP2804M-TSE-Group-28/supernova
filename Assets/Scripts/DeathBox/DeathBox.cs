@@ -6,10 +6,11 @@ public class DeathBox : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             // Subtract player health here
             // I.E PlayerHealth = -69
+            other.GetComponent<Health>().Kill();
         }
     }
 }
