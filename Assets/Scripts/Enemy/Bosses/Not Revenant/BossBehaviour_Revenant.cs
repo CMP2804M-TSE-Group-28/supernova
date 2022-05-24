@@ -12,10 +12,14 @@ public class BossBehaviour_Revenant : MonoBehaviour
     private Vector3 _dirToPlayer;
     private float _distanceToPlayer;
 
+    public GameObject[] _groundMovePoints;
+
     // Start is called before the first frame update
     private void Start()
     {
         Controller = GetComponent<BossController_Revenant>();
+
+        _groundMovePoints = GameObject.FindGameObjectsWithTag("RevenantMovePos");
     }
 
     // Update is called once per frame
@@ -39,6 +43,15 @@ public class BossBehaviour_Revenant : MonoBehaviour
 
     private void UpdateBehaviour()
     {
+        if(_distanceToPlayer <= Controller.PhaseAttacks.AttackDistancePhase1)
+        {
+            Debug.Log("Player is in range");
 
+
+        }
+        else
+        {
+            Debug.Log("Player not in range");
+        }
     }
 }
