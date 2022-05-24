@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     /// Exposed config.
     /// </summary>
     public float jumpForce; // Defines the upwards force of a jump. DEFAULT: 30
-    public float movementSpeed; // Defines how fast the player moves. DEFAULT: 100
+    public float movementSpeed = 100; // Defines how fast the player moves. DEFAULT: 100
     [SerializeField] public float sensitivity = 0.5f; // Mouse sensitivity.
 
     private void Start()
@@ -84,10 +84,12 @@ public class PlayerMovement : MonoBehaviour
         if (isCrouching)
         {
             player.localScale = new Vector3(player.localScale.x, crouchHeight, player.localScale.z);
+            movementSpeed = 75;
         }
         else
         {
             player.localScale = new Vector3(player.localScale.x, nonCrouchHeight, player.localScale.z);
+            movementSpeed = 100;
         }
     }
 
