@@ -22,4 +22,9 @@ public class BossMovement_Revenant : MonoBehaviour
     {
         
     }
+
+    public void MoveToPosition(Vector3 NewPosition)
+    {
+        Controller.transform.position = Vector3.MoveTowards(Controller.transform.position, NewPosition, 1f);
+    }
 }

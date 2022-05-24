@@ -14,10 +14,9 @@ public class BossController_Revenant : MonoBehaviour
 
     [Header("General Stats")] public float Health;
     [Range(25, 100)] public float Phase2HealthRequirement;
-    public float MoveSpeed;
 
     [HideInInspector] public bool InPhase2 = false;
-    [HideInInspector] public bool IsActive = false;
+    public bool IsActive = false;
     [HideInInspector] public Transform PlayerEntity;
 
     // PRIVATE DECLARATIONS
@@ -32,7 +31,7 @@ public class BossController_Revenant : MonoBehaviour
 
         BossRigidbody = GetComponent<Rigidbody>();
 
-        PlayerEntity = GameObject.FindGameObjectWithTag("Player").transform;
+        PlayerEntity = GameObject.Find("PlayerTarget").transform;
 
         _maxHealth = Health;
     }
