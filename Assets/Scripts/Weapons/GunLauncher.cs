@@ -6,6 +6,7 @@ using Weapons;
 public class GunLauncher : Weapon
 {
     public Camera cam;
+    public GameObject _WeaponModel;
     
     public Transform shotPoint;
     public GameObject prefabBullet;
@@ -17,7 +18,8 @@ public class GunLauncher : Weapon
     private void Start()
     {
         RemainingAmmo = 100;
-        WeaponName = "Pistol";
+        WeaponName = "Rocket Launcher";
+        WeaponModel = _WeaponModel;
     }
 
     
