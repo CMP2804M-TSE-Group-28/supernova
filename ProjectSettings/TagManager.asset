@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Breakable
   - MusicManager
-  - RevenantMovePos
+  - RevenantMoveGround
+  - RevenantMoveAir
   layers:
   - Default
   - TransparentFX

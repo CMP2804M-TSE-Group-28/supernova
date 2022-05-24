@@ -11,18 +11,26 @@ public class BossMovement_Revenant : MonoBehaviour
     public Transform[] GroundMovementPositions;
     public Transform[] AirMovementPositions;
 
-    [HideInInspector] public GameObject[] _groundMovePoints;
+    // PRIVATE DECLARATIONS
+    private GameObject[] _groundMovePoints;
+    private GameObject[] _airMovePoints;
 
     // Start is called before the first frame update
     private void Start()
     {
         Controller = GetComponent<BossController_Revenant>();
 
-        _groundMovePoints = GameObject.FindGameObjectsWithTag("RevenantMovePos");
+        _groundMovePoints = GameObject.FindGameObjectsWithTag("RevenantMoveGround");
+        _airMovePoints = GameObject.FindGameObjectsWithTag("RevenantMoveAir");
 
         for(int i = 0; i < _groundMovePoints.Length; i++)
         {
             GroundMovementPositions[i] = _groundMovePoints[i].transform;
+        }
+
+        for (int i = 0; i < _airMovePoints.Length; i++)
+        {
+            AirMovementPositions[i] = _airMovePoints[i].transform;
         }
     }
 
