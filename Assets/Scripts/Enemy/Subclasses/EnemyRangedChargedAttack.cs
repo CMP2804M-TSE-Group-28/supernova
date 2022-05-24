@@ -6,13 +6,14 @@ public class EnemyRangedChargedAttack : MonoBehaviour
 {
     // PUBLIC DECLARATIONS
     // Scripts
-    [Header("Master Script")] public EnemyController Controller;
+    [Header("Master Script")]
+    public EnemyController Controller;
 
     // Start is called before the first frame update
     private void Start()
     {
         // Get all available scripts on the entity
-        Controller = GetComponent<EnemyController>();
+        Controller = this.GetComponent<EnemyController>();
     }
 
     // Update is called once per frame

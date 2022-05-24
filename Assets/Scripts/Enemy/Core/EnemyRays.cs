@@ -6,19 +6,23 @@ public class EnemyRays : MonoBehaviour
 {
     // PUBLIC DECLARATIONS
     // Scripts
-    [Header("Master Script")] public EnemyController Controller;
+    [Header("Master Script")]
+    public EnemyController Controller;
 
-    [Header("Rays")] public Transform HeadRay;
+    [Header("Rays")]
+    public Transform HeadRay;
 
-    [Header("Layer Masks")] public LayerMask PlayerMask;
+    [Header("Layer Masks")]
+    public LayerMask PlayerMask;
 
-    [HideInInspector] public bool PlayerSightBlocked;
+    //[HideInInspector]
+    public bool PlayerSightBlocked;
 
     // Start is called before the first frame update
     private void Start()
     {
         // Get all available scripts on the entity
-        Controller = GetComponent<EnemyController>();
+        Controller = this.GetComponent<EnemyController>();
     }
 
     // Update is called once per frame

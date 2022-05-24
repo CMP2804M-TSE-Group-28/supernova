@@ -77,4 +77,3 @@ The addition of features must be completed on a **feature branch** (these may al
 - New features should also be opened as an issue first.
 
 - While working through an issue, you must **update your progress on the Notion Tracker**.
-

@@ -43,6 +43,9 @@ public class GunPistol : Weapon
             
             // Update Remaining Ammo    
             UseAmmo();
+            
+            // destroy instanceBullet after 1.0f seconds
+            Destroy(instanceBullet, 1.0f);
         }
         else
         {
