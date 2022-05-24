@@ -9,15 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4791655518766135597}
-  - component: {fileID: 4791655518766135594}
-  - component: {fileID: 4791655518766135595}
-  - component: {fileID: 4791655518766135596}
-  - component: {fileID: 4791655518766135588}
-  - component: {fileID: 4791655518766135589}
-  - component: {fileID: 4791655518766135591}
-  - component: {fileID: 4791655518766135590}
   - component: {fileID: 4791655518766135592}
   - component: {fileID: 4791655518766135593}
+  - component: {fileID: 7830955970670229334}
+  - component: {fileID: 6398300673162991765}
+  - component: {fileID: 255243095649138270}
+  - component: {fileID: 4423672740927351970}
+  - component: {fileID: 4621672967140154895}
+  - component: {fileID: 3441992545596618781}
   m_Layer: 0
   m_Name: EnemyEntity_Ranged
   m_TagString: Untagged
@@ -43,140 +42,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4791655518766135594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791655518766135598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d091493c999336341b09f7f1ca9b02b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Behaviour: {fileID: 0}
-  Movement: {fileID: 0}
-  Rays: {fileID: 0}
-  Animator: {fileID: 0}
-  Melee: {fileID: 0}
-  MeleeCharge: {fileID: 0}
-  MeleeChargedAttack: {fileID: 0}
-  Ranged: {fileID: 0}
-  RangedChargedAttack: {fileID: 0}
-  NavAgent: {fileID: 0}
-  PlayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  PlayerEntity: {fileID: 0}
-  PlayerTarget: {fileID: 0}
-  IsRanged: 0
-  IsMelee: 0
-  CanChargeRangedAttack: 0
-  CanChargeMeleeAttack: 0
-  CanMeleeCharge: 0
---- !u!114 &4791655518766135595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791655518766135598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8d3abced1190041b7e5396df634e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  PlayerTarget: {fileID: 0}
---- !u!114 &4791655518766135596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791655518766135598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4f724aab1d273448800a1560b720f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
---- !u!114 &4791655518766135588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791655518766135598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 719fcc94609218845a11bb819ff3b567, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  MainSprite: {fileID: 4791655518973770500}
---- !u!114 &4791655518766135589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791655518766135598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 374757dd07d212c409ebcbfc4c854bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  HeadRay: {fileID: 4791655519331963630}
-  PlayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  PlayerSightBlocked: 0
---- !u!114 &4791655518766135591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791655518766135598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e0794ff35a4c44ba7f58e8dc6dac4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  AttackDistance: 2
-  AttackDelay: 0
-  AttackDamage: 0
---- !u!114 &4791655518766135590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4791655518766135598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc1602209b710da40bd9da2501f07967, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  ShotOrigin: {fileID: 4791655520391997031}
-  IsProjectile: 0
-  Info:
-    ProjectilePrefab: {fileID: 0}
-    ProjectileSprite: {fileID: 0}
-    Speed: 0
-    Damage: 0
-    DropRate: 0
-    IsExplosiveType: 0
-    IsLaserType: 0
-  AttackDistance: 10
-  AttackDelay: 0.5
-  AttackDamage: 0
-  AccuracySpread: 1
 --- !u!195 &4791655518766135592
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -213,6 +78,132 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7830955970670229334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791655518766135598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460fb9b69569df64eae25eaaa85d8761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Behaviour: {fileID: 0}
+  Movement: {fileID: 0}
+  Rays: {fileID: 0}
+  Animator: {fileID: 0}
+  Melee: {fileID: 0}
+  MeleeCharge: {fileID: 0}
+  MeleeChargedAttack: {fileID: 0}
+  Ranged: {fileID: 0}
+  RangedChargedAttack: {fileID: 0}
+  NavAgent: {fileID: 0}
+  AIRigidbody: {fileID: 0}
+  PlayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  Health: 100
+  Speed: 5
+  PlayerEntity: {fileID: 0}
+  PlayerTarget: {fileID: 0}
+  IsActive: 1
+  IsRanged: 0
+  IsMelee: 0
+  CanChargeRangedAttack: 0
+  CanChargeMeleeAttack: 0
+  CanMeleeCharge: 0
+  PlayerLookTarget: {x: 0, y: 0, z: 0}
+--- !u!114 &6398300673162991765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791655518766135598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0132d8e4e0b233046a88a79de38f956b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  PlayerTarget: {fileID: 0}
+  DirectionToPlayer: {x: 0, y: 0, z: 0}
+  RangedChargedTimer: 0
+  MeleeChargedTimer: 0
+--- !u!114 &255243095649138270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791655518766135598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4cb1d42a59746640b1eae0997b5f4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+--- !u!114 &4423672740927351970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791655518766135598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b34a540627424c4e9eafc716c7b6fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  HeadRay: {fileID: 4791655519331963630}
+  MapMask:
+    serializedVersion: 2
+    m_Bits: 1
+  PlayerSightBlocked: 0
+--- !u!114 &4621672967140154895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791655518766135598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd26c09b380887641b79208ef12808c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  MainSprite: {fileID: 4791655518973770500}
+  LookAtPlayerOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &3441992545596618781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791655518766135598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad50d9937e5d9634f8a38903197753c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  ShotOrigin: {fileID: 4791655520391997031}
+  IsProjectile: 0
+  Info:
+    ProjectilePrefab: {fileID: 0}
+    ProjectileSprite: {fileID: 0}
+    Speed: 0
+    Damage: 0
+    DropRate: 0
+    IsExplosiveType: 0
+  AttackDistance: 10
+  AttackDelay: 3
+  AttackDamage: 10
+  AccuracySpread: 1
 --- !u!1 &4791655518973770501
 GameObject:
   m_ObjectHideFlags: 0
