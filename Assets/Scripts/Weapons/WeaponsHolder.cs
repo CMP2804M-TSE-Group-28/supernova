@@ -21,6 +21,7 @@ public class WeaponsHolder : MonoBehaviour
     /// </summary>
     private void OnFire()
     {
+        print($"Shooting with {CurrentWeapon.WeaponName}");
         CurrentWeapon.Fire();
     }
 
@@ -30,5 +31,31 @@ public class WeaponsHolder : MonoBehaviour
         {
             print($"I'm {weapon.WeaponName} I have {weapon.RemainingAmmo} shots...");
         }
+    }
+
+    private void OnSwitchToPistol()
+    {
+        // Log
+        print("Switching to Pistol");
+        
+        // Disable Last Weapon
+        CurrentWeapon.WeaponModel.SetActive(false);
+        
+        // Switch to New Weapon
+        currentWeaponIndex = 0;
+        CurrentWeapon.WeaponModel.SetActive(true);
+    }
+
+    private void OnSwitchToRocketLauncher()
+    {
+        // Log
+        print("Switching to Rocket Launcher");
+        
+        // Disable Last Weapon
+        CurrentWeapon.WeaponModel.SetActive(false);
+        
+        // Switch to New Weapon
+        currentWeaponIndex = 1;
+        CurrentWeapon.WeaponModel.SetActive(true);
     }
 }

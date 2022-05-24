@@ -67,6 +67,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchToPistol",
+                    "type": "Button",
+                    "id": "384589bf-9f60-4658-b7df-98f28ecd3eca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchToRocketLauncher",
+                    "type": "Button",
+                    "id": "6cb7e8da-8e25-4934-b0c6-d3f721b42f9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -292,8 +310,8 @@
                 },
                 {
                     "name": "",
-                    "id": "f50fa201-c581-4f35-b2c3-aba6f9d6267e",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "abb7ab8f-33cb-4cc9-a3ef-34bd75b59f20",
+                    "path": "<VirtualMouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -305,6 +323,28 @@
                     "name": "",
                     "id": "30526457-b272-4b28-90f0-018c4d08c5ad",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "829090b7-4d8e-4833-9113-6071a6c29cee",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8241a053-8fa7-4da6-8656-b0cbaf4d61a2",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -342,6 +382,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "668370a5-20db-4b89-8ba2-6a23386b0c08",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchToPistol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18f5ca93-f7b3-4093-8304-f8b8e2096fde",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchToPistol",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29e70861-54ab-4a29-af8d-62626f70c4f9",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchToRocketLauncher",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8db48de2-c7de-418c-a2d1-19230ebf10a5",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchToRocketLauncher",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

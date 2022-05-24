@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 4289531490211206781}
+  _WeaponModel: {fileID: 0}
   shotPoint: {fileID: 4289531488846806445}
   prefabBullet: {fileID: 5922827451569582571, guid: 07551506189d2dd4d9d04df1afd9ebdc, type: 3}
   audioSrc: {fileID: 4289531489071781658}
@@ -389,6 +390,7 @@ GameObject:
   - component: {fileID: 4289531489006148770}
   - component: {fileID: 4289531489006148768}
   - component: {fileID: 4289531489006148769}
+  - component: {fileID: 2226836069588543927}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -490,6 +492,19 @@ MonoBehaviour:
   jumpForce: 20
   movementSpeed: 100
   sensitivity: 0.1
+--- !u!65 &2226836069588543927
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5478538974046446026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.300476, z: 1}
+  m_Center: {x: 0, y: 0.8284607, z: 0}
 --- !u!1 &5478538974867499779
 GameObject:
   m_ObjectHideFlags: 0
