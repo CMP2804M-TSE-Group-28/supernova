@@ -16,6 +16,7 @@ public class BossController_Revenant : MonoBehaviour
     [Range(25, 100)] public float Phase2HealthRequirement;
 
     [HideInInspector] public bool InPhase2 = false;
+    [HideInInspector] public bool IsAirborne = false;
     public bool IsActive = false;
     [HideInInspector] public Transform PlayerEntity;
 
