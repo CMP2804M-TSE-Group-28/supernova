@@ -11,7 +11,7 @@ public class PinkyEnabler : MonoBehaviour
         if (other.gameObject.tag == "Player" &&
             Pinky != null)
         {
-            Pinky.GetComponent<BossController_Revenant>().IsActive = true;
+            Pinky.GetComponent<BossController_Pinky>().IsActive = true;
         }
     }
 
@@ -20,7 +20,7 @@ public class PinkyEnabler : MonoBehaviour
         if (other.gameObject.tag == "Player" &&
             Pinky != null)
         {
-            Pinky.GetComponent<BossController_Revenant>().IsActive = false;
+            Pinky.GetComponent<BossController_Pinky>().IsActive = false;
         }
     }
 }

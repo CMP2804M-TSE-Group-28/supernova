@@ -15,9 +15,11 @@ public class GunPistol : Weapon
     public AudioClip sfxShoot;
     public AudioClip sfxEmpty;
 
+    public int StartingAmmo = 200;
+
     private void Start()
     {
-        RemainingAmmo = 100;
+        RemainingAmmo = StartingAmmo;
         WeaponName = "Pistol";
         WeaponModel = _WeaponModel;
     }

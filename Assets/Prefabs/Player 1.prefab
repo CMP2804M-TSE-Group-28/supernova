@@ -524,8 +524,8 @@ MonoBehaviour:
   deaths: 0
   LastSetRespawnPoint: {fileID: 0}
   player: {fileID: 0}
-  sfxDamage: {fileID: 0}
-  sfxDeath: {fileID: 0}
+  sfxDamage: {fileID: 8300000, guid: f68e983226b98c24b9b571969da65d97, type: 3}
+  sfxDeath: {fileID: 8300000, guid: 0154a9d7adca5734ab0d61b82cbf84fa, type: 3}
 --- !u!82 &2115395231451888962
 AudioSource:
   m_ObjectHideFlags: 0
