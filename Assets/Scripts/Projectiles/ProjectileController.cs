@@ -50,7 +50,7 @@ public class ProjectileController : MonoBehaviour
     {
         GameObject _explosionVFX = Instantiate(Info.ExplosionVFX, transform.position, Quaternion.identity);
 
-        Collider[] _entitiesInBlast = Physics.OverlapSphere(transform.position, 3f);
+        Collider[] _entitiesInBlast = Physics.OverlapSphere(transform.position, 1.5f);
         foreach (var _collider in _entitiesInBlast)
         {
             if(_collider.gameObject.tag == "Player")
@@ -60,6 +60,14 @@ public class ProjectileController : MonoBehaviour
             else if(_collider.gameObject.tag == "Enemy")
             {
                 _collider.gameObject.GetComponent<EnemyController>().Health -= Info.Damage;
+            }
+            else if(_collider.gameObject.tag == "Breakable")
+            {
+                _collider.gameObject.SetActive(false);
+            }
+            else if(_collider.gameObject.tag == "NotRevenant")
+            {
+                _collider.gameObject.GetComponent<BossController_Revenant>().Health -= Info.Damage;
             }
         }
 

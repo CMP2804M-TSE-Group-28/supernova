@@ -25,6 +25,8 @@ public class BulletController : MonoBehaviour
         }
         else if(other.gameObject.tag == "NotPinky")
         {
+            other.gameObject.GetComponent<BossController_Pinky>().Health -= Damage;
+
             Debug.Log("Hit the not pinky");
         }
         else if(other.gameObject.tag == "Map")

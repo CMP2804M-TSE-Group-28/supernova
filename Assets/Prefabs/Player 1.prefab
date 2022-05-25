@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52dd8a2a330544040845c7c7cd05de33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 100
   interval: 1
   deaths: 0
   LastSetRespawnPoint: {fileID: 0}
