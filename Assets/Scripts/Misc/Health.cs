@@ -63,9 +63,9 @@ public class Health : MonoBehaviour
 
     IEnumerator RespawnPlayerAtLastPointTheySet()
     {
-        yield return new WaitForSeconds(3);
         print($"Movin' and Groovin' the player to {LastSetRespawnPoint.position}");
         player.position = LastSetRespawnPoint.position;
+        yield return new WaitForSeconds(3);
     }
     
     /// <summary>
