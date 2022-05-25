@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -33,6 +34,11 @@ public class Health : MonoBehaviour
     // Store Player Transform
     public Transform player;
     
+    // Death Sound
+    private AudioSource audiSrc;
+    public AudioClip sfxDamage;
+    public AudioClip sfxDeath;
+    
     /// <summary>
     /// Setup the basic health basics
     /// </summary>
@@ -40,6 +46,7 @@ public class Health : MonoBehaviour
     {
         Value = startingHealth;
         player = GetComponent<Transform>();
+        audiSrc = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -48,6 +55,7 @@ public class Health : MonoBehaviour
         {
             Regenerate();
             print("The player has died.");
+            audiSrc.PlayOneShot(sfxDeath);
             deaths += 1;
             StartCoroutine(RespawnPlayerAtLastPointTheySet());
         }
@@ -65,6 +73,8 @@ public class Health : MonoBehaviour
     /// </summary>
     public void TakeDamage()
     {
+        print("Taking 1 damage");
+        audiSrc.PlayOneShot(sfxDamage);
         Value -= interval;
     }
 
@@ -74,6 +84,8 @@ public class Health : MonoBehaviour
     /// <param name="multiplier">How much more impact, this is multiplied by the standard impact</param>
     public void TakeDamage(int multiplier)
     {
+        print("Taking more damage");
+        audiSrc.PlayOneShot(sfxDamage);
         Value -= (interval * multiplier);
     }
 
