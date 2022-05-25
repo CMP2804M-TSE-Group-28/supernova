@@ -32,7 +32,7 @@ public class GunPistol : Weapon
             audioSrc.PlayOneShot(sfxShoot, .7f);
         
             // Create a bullet clone and send it forward.
-            GameObject instanceBullet = Instantiate(prefabBullet, shotPoint.position, Quaternion.identity);
+            GameObject instanceBullet = Instantiate(prefabBullet, shotPoint.position,  Quaternion.Euler((0 + shotPoint.eulerAngles.x), (0 + shotPoint.eulerAngles.y), (0 + shotPoint.eulerAngles.z)));
 
             Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 2400f);
             instanceBullet.GetComponent<Rigidbody>().AddForce(forward);

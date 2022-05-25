@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  _WeaponModel: {fileID: 0}
   shotPoint: {fileID: 5967103889979804021}
   prefabBullet: {fileID: 3946762403771813242, guid: eec7a3dabadf3db4f989ca2128f5c0c9, type: 3}
   audioSrc: {fileID: 3306602574209433490}
@@ -172,7 +173,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8747570991920047495}
   m_LocalRotation: {x: -0, y: -0, z: 0.0000000037252903, w: 1}
-  m_LocalPosition: {x: 1.009954, y: 0.679326, z: 0.010001461}
+  m_LocalPosition: {x: 7, y: 0.679326, z: 0.01}
   m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 2480391796534088451}

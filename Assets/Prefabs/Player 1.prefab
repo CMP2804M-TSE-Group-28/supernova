@@ -524,6 +524,8 @@ MonoBehaviour:
   deaths: 0
   LastSetRespawnPoint: {fileID: 0}
   player: {fileID: 0}
+  sfxDamage: {fileID: 0}
+  sfxDeath: {fileID: 0}
 --- !u!82 &2115395231451888962
 AudioSource:
   m_ObjectHideFlags: 0
@@ -856,6 +858,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 4289531490211206781}
+    - target: {fileID: 1104070881527273007, guid: 4e0fa228aca7650498346c2282efba45, type: 3}
+      propertyPath: sfxShoot
+      value: 
+      objectReference: {fileID: 8300000, guid: 00cd867917af0a744abc08e993c9175e, type: 3}
     - target: {fileID: 2480391796534088451, guid: 4e0fa228aca7650498346c2282efba45, type: 3}
       propertyPath: m_RootOrder
       value: 1

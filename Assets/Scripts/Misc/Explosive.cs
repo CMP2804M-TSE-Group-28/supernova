@@ -13,72 +13,47 @@ public class Explosive : MonoBehaviour
 //  this determines the behaviour of the object.
 // The launcher should be a child of the player to follow player's position and rotation for maximum effectiveness.
 
-    //[SerializeField] private float moveSpeed = 1.5f; // movement speed of projectile
-    //[SerializeField] private float range = 6f; // size of explosion sphere
+    [SerializeField] private MeshRenderer m; // mesh renderer of projectile, disabled on CreateExplosion
 
-    //[SerializeField] private GameObject projectile;
     [SerializeField] private float projTTL = 2.0f; // projectile will move forward for 2 seconds before exploding automatically
-    [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject prefabExplosion;
     [SerializeField] private float expTTL = 0.5f; // how long explosion stays
 
     private float sfxVol = 0.7f; // if we do global volume, then please edit this variable to use it.
     [SerializeField]private AudioSource audioSource; // source
     [SerializeField]private AudioClip audioClip; // sound
 
-    //[SerializeField] private bool isFired = false;
+    private bool hasExploded = false;
 
-    void Update()
+    void FixedUpdate()
     {
-        /*
-        if (!isFired)
-        {
-            return; // if already been fired, you can't shoot again until explosion appears
-        }
-        */
-
         projTTL -= Time.deltaTime;
 
-        if (projTTL < 0f)
+        if ((projTTL < 0f) && !hasExploded)
         {
             createExplosion();
+            hasExploded = true;
         }
-
-        expTTL -= Time.deltaTime;
-
-        if (expTTL < 0f)
-        {
-            explosion.SetActive(false);
-        }
-
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        //if (isFired) return;
-        createExplosion();
-        Debug.Log("reaches here");
-    }
-/*
-    public void Fire(Transform aTransform) // takes position of entity that fired it
-    {   
-        Debug.Log("Fire() Called!!");
-        if (isFired)
+        if (!hasExploded)
         {
-            Debug.Log("HAS ALREADY BEEN FIRED!! returning...");
-            return;
+            Debug.Log("COLLIDED. EXPLOSION!!");
+            createExplosion();
+            hasExploded = true;
         }
-        isFired = true;
     }
-*/
+
     public void createExplosion()
     {
         audioSource.PlayOneShot(audioClip, sfxVol); // play sound
-        //Vector3 projVector = projectile.transform.position; 
         expTTL = 0.5f; // explosion only lasts 0.5 seconds
-        explosion.SetActive(true);
-        //projVector, Quaternion.identity);
-        MeshRenderer m = this.GetComponent<MeshRenderer>();
+        GameObject instanceExplosion = Instantiate(prefabExplosion, transform.position, Quaternion.identity);
+
+        Destroy(instanceExplosion, expTTL);
+
         m.enabled = false;
-        //isFired = false; // rocket launcher can now be fired again
     }
 }

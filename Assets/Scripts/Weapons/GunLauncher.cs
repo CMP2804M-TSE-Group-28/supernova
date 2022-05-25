@@ -3,6 +3,10 @@
 using UnityEngine;
 using Weapons;
 
+/*
+firing sound received from: https://freesound.org/people/Mrthenoronha/sounds/517169/
+*/
+
 public class GunLauncher : Weapon
 {
     public Camera cam;
@@ -32,7 +36,8 @@ public class GunLauncher : Weapon
             audioSrc.PlayOneShot(sfxShoot, .7f);
         
             // Create a bullet clone and send it forward.
-            GameObject instanceBullet = Instantiate(prefabBullet, shotPoint.position, Quaternion.identity);
+            GameObject instanceBullet = Instantiate(prefabBullet, shotPoint.position, Quaternion.Euler((0 + shotPoint.eulerAngles.x), (0 + shotPoint.eulerAngles.y), (90 + shotPoint.eulerAngles.z)));
+            //GameObject projectile = GameObject.Find("/rockProj/Projectile");
 
             print("Cam Pos");
             print(cam.transform.rotation);
@@ -40,7 +45,7 @@ public class GunLauncher : Weapon
             print("forward");
             print(transform.forward);
             
-            Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 250f);
+            Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 500f);
             instanceBullet.GetComponent<Rigidbody>().AddForce(forward);
             
             // Update Remaining Ammo    
