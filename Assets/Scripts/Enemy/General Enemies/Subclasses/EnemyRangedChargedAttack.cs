@@ -10,7 +10,7 @@ public class EnemyRangedChargedAttack : MonoBehaviour
 
     public float ChargedChargeUpTime;
     public float ChargedShotDelayBetweenShots;
-    [Range(1f, 3f)] public float ChargedDamageMultiplier = 1f;
+    [Range(1f, 3f)] public int ChargedDamageMultiplier = 1;
     [Range(1f, 3f)] public float ChargedMoveSpeedMultipler = 1f;
     [HideInInspector] public bool AttackIsCharged = false;
     [HideInInspector] public bool PreformingChargeAttack = false;

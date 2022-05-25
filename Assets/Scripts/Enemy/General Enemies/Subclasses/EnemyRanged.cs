@@ -17,7 +17,7 @@ public class EnemyRanged : MonoBehaviour
     [Header("Ranged Stats")] public float AttackDistance;
 
     public float AttackDelay;
-    public float AttackDamage;
+    public int AttackDamage;
 
     [Range(0, 5)]
     public float AccuracySpread;
@@ -117,6 +117,8 @@ public class EnemyRanged : MonoBehaviour
                 Debug.Log("Hit the player - Ray");
 
                 // Needs player health function before we can substract their health
+
+                _rayHit.collider.gameObject.GetComponent<Health>().TakeDamage(AttackDamage);
             }
 
             // Debug the ray
@@ -131,10 +133,13 @@ public class EnemyRanged : MonoBehaviour
 
     public void ShootThePlayerProjectile()
     {
+        ShotOrigin.LookAt(Controller.PlayerTarget);
+
         // Insantiates the projectile
         GameObject _projectile = Instantiate(Controller.Ranged.Info.ProjectilePrefab,
             ShotOrigin.position,
-            Quaternion.identity);
+            Quaternion.identity,
+            ShotOrigin);
 
         // Gets and sets the necessary components in projectile
         _projectile.GetComponent<ProjectileController>().GetProjectileInfo(transform.gameObject);
@@ -146,15 +151,15 @@ public class EnemyRanged : MonoBehaviour
         if(Controller.CanChargeRangedAttack == true)
         {
             // Sets projectile to charged projectile
-            _projectile.GetComponent<ProjectileInfoEnemy>().Damage *= Controller.RangedChargedAttack.ChargedDamageMultiplier;
-            _projectile.GetComponent<ProjectileInfoEnemy>().Speed *= Controller.RangedChargedAttack.ChargedMoveSpeedMultipler;
+            _projectile.GetComponent<ProjectileController>().Info.Damage *= Controller.RangedChargedAttack.ChargedDamageMultiplier;
+            _projectile.GetComponent<ProjectileController>().Info.Speed *= Controller.RangedChargedAttack.ChargedMoveSpeedMultipler;
         }
         else
         {
             // Default projectile
-            _projectile.GetComponent<ProjectileInfoEnemy>().Damage = Controller.Ranged.Info.Damage;
-            _projectile.GetComponent<ProjectileInfoEnemy>().Speed = Controller.Ranged.Info.Speed;
-            _projectile.GetComponent<ProjectileInfoEnemy>().DropRate = Controller.Ranged.Info.DropRate;
+            _projectile.GetComponent<ProjectileController>().Info.Damage = Controller.Ranged.Info.Damage;
+            _projectile.GetComponent<ProjectileController>().Info.Speed = Controller.Ranged.Info.Speed;
+            _projectile.GetComponent<ProjectileController>().Info.DropRate = Controller.Ranged.Info.DropRate;
         }
 
         //Debug.Log("Shot the player - Projectile");

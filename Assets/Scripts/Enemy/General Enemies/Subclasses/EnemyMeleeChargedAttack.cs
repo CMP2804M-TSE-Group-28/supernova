@@ -10,7 +10,7 @@ public class EnemyMeleeChargedAttack : MonoBehaviour
 
     public float ChargeDelayBetweenCharges;
     public float ChargedChargeUpTime;
-    [Range(1f, 3f)] public float ChargedDamageMultiplier = 1f;
+    [Range(1f, 3f)] public int ChargedDamageMultiplier = 1;
     [HideInInspector] public bool AttackIsCharged = false;
      public bool ChargingUpAttack = false;
 

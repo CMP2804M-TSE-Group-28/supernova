@@ -27,11 +27,11 @@ public class ProjectileMovement : MonoBehaviour
 
     private void MoveProjectile()
     {
-        _movementDir =  ShotOrigin.transform.forward * Controller.Info.Speed;
+        _movementDir =  (ShotOrigin.transform.forward * Controller.Info.Speed) * 10;
 
         _movementDir.y += -Controller.Info.DropRate * Time.deltaTime;
 
-        transform.Translate(_movementDir * Time.deltaTime);
+        Controller.ProjectileRigidbody.AddForce(_movementDir * Time.deltaTime);
     }
 
     private void DestoryProjectileAfterTime(float Seconds)

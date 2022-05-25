@@ -34,7 +34,7 @@ public class GunPistol : Weapon
             // Create a bullet clone and send it forward.
             GameObject instanceBullet = Instantiate(prefabBullet, shotPoint.position, Quaternion.identity);
 
-            Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 500f);
+            Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 2400f);
             instanceBullet.GetComponent<Rigidbody>().AddForce(forward);
             
             // Update Remaining Ammo    

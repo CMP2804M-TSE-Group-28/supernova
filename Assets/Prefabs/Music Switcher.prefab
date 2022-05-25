@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6220652301561932182}
   - component: {fileID: 6220652301561932177}
   - component: {fileID: 6220652301561932183}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Music Switcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}

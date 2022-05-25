@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2697865151503781653}
   m_Layer: 0
   m_Name: UNFINISHED_EnemyEntity_BOSS_1 - Copy
-  m_TagString: Untagged
+  m_TagString: NotRevenant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
   BossRigidbody: {fileID: 0}
   Health: 600
   Phase2HealthRequirement: 50
-  MoveSpeed: 10
   InPhase2: 0
+  IsAirborne: 0
   IsActive: 0
   PlayerEntity: {fileID: 0}
 --- !u!114 &1861815229772588654
@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  _groundMovePoints: []
 --- !u!114 &4591465280776035867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +176,18 @@ MonoBehaviour:
   Controller: {fileID: 0}
   AttackDistancePhase1: 10
   AttackDistancePhase2: 20
+  ProjectileInfo:
+    ProjectilePrefab: {fileID: 0}
+    ProjectileSprite: {fileID: 0}
+    Speed: 0
+    Damage: 0
+    DropRate: 0
+    IsExplosiveType: 0
+  BasicAttackDelay: 0
+  ChargedShotDelay: 0
+  MissileSwarmDelay: 0
+  IsPreformingSwarmAttack: 0
+  IsChargingShot: 0
 --- !u!1 &4791655518973770501
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class EnemyMelee : MonoBehaviour
     [Header("Melee Stats")] public float AttackDistance;
     
     public float AttackDelay;
-    public float AttackDamage;
+    public int AttackDamage;
 
     private float _attackTimer = 0f;
 
@@ -52,14 +52,18 @@ public class EnemyMelee : MonoBehaviour
                 AttackDamage *= Controller.MeleeChargedAttack.ChargedDamageMultiplier;
 
                 // Take players health
+                Controller.PlayerEntity.GetComponent<Health>().TakeDamage(AttackDamage);
+
                 Debug.Log("Hit a charged melee attack");
             }
         }
         // Preforms a default melee attack
         else
         {
-            Debug.Log("Hit a normal melee attack");
             // Take players Health
+            Controller.PlayerEntity.GetComponent<Health>().TakeDamage(AttackDamage);
+
+            Debug.Log("Hit a normal melee attack");
         }
 
         // Needs player health function before this can be implemented

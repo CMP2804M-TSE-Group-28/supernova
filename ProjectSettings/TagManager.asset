@@ -8,6 +8,11 @@ TagManager:
   - MusicManager
   - RevenantMoveGround
   - RevenantMoveAir
+  - RevenantMovePos
+  - Enemy
+  - NotRevenant
+  - NotPinky
+  - Map
   layers:
   - Default
   - TransparentFX

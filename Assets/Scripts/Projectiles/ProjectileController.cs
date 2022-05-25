@@ -10,8 +10,8 @@ public class ProjectileController : MonoBehaviour
 
     [Header("Componets")]
     public Rigidbody ProjectileRigidbody;
-
     public Sprite ProjectileSprite;
+    public Transform SpritePlane;
 
     private Transform _playerPosition;
 
@@ -21,13 +21,13 @@ public class ProjectileController : MonoBehaviour
         // Gets scripts
         Movement = GetComponent<ProjectileMovement>();
         ProjectileRigidbody = GetComponent<Rigidbody>();
+
+        _playerPosition = GameObject.Find("PlayerTarget").transform;
     }
 
     private void Update()
     {
-        _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-
-        transform.LookAt(_playerPosition);
+        SpritePlane.LookAt(_playerPosition);
     }
 
     public void GetProjectileInfo(GameObject EntityFiring)
@@ -37,5 +37,13 @@ public class ProjectileController : MonoBehaviour
 
         // Sets all the necessary stats and components
         ProjectileSprite = Info.ProjectileSprite;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            other.GetComponent<Health>().TakeDamage(Info.Damage);
+        }
     }
 }

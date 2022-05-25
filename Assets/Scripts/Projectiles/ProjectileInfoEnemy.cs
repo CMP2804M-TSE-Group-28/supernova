@@ -11,7 +11,7 @@ public class ProjectileInfoEnemy
 
     [Header("Projectile Stats")]
     public float Speed;
-    public float Damage;
+    public int Damage;
     public float DropRate;
 
     [Header("Projectile Type")]
