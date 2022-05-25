@@ -15,4 +15,5 @@ public class ProjectileInfoEnemy
     public float DropRate;
 
     [Header("Projectile Type")] public bool IsExplosiveType;
+    public bool IsTrackingPlayer;
 }

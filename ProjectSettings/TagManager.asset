@@ -13,6 +13,7 @@ TagManager:
   - NotRevenant
   - NotPinky
   - Map
+  - Projectile
   layers:
   - Default
   - TransparentFX

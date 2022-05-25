@@ -70,12 +70,19 @@ public class ProjectileController : MonoBehaviour
     {
         if(Info.IsExplosiveType == true)
         {
-            if(_hasExploded == false &&
-                _explosionDelayTimer >= _explodeDelay)
+            if(other.gameObject.tag == "Projectile")
             {
-                _hasExploded = true;
+                Debug.Log("Projectile hit another projectile");
+            }
+            else
+            {
+                if (_hasExploded == false &&
+                    _explosionDelayTimer >= _explodeDelay)
+                {
+                    _hasExploded = true;
 
-                CreateExplosion();
+                    CreateExplosion();
+                }
             }
         }
         else

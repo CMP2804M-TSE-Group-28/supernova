@@ -36,7 +36,7 @@ public class BossMovement_Revenant : MonoBehaviour
 
     public void MoveToPosition(Transform NewPosition)
     {
-        Controller.transform.position = Vector3.MoveTowards(Controller.transform.position, NewPosition.position, MoveSpeed * Time.deltaTime);
+        Controller.transform.position = Vector3.MoveTowards(Controller.transform.position, NewPosition.position, Time.deltaTime * MoveSpeed);
     }
 
     public Transform FindClosestGroundPoint(Transform[] Points)
@@ -55,6 +55,8 @@ public class BossMovement_Revenant : MonoBehaviour
                 minDistance = _distance;
             }
         }
+
+        Debug.DrawLine(transform.position, _nearestPoint.position, Color.cyan);
 
         return _nearestPoint;
     }
@@ -76,25 +78,30 @@ public class BossMovement_Revenant : MonoBehaviour
             }
         }
 
+        Debug.DrawLine(transform.position, _nearestPoint.position, Color.cyan);
+
         return _nearestPoint;
     }
 
     public Transform FindFurthestAirPoint(Transform[] Points)
     {
         Transform _furthestPoint = null;
-        float minDistance = Mathf.Infinity;
+        float furthestDistance = 0f;
         Vector3 _playerPos = Controller.PlayerEntity.position;
 
         foreach (Transform p in Points)
         {
-            float _distance = Vector3.Distance(p.position, _playerPos);
+            float _distanceToPoint = Vector3.Distance(_playerPos,
+                p.position);
 
-            if (_distance > minDistance)
+            if(_distanceToPoint > furthestDistance)
             {
                 _furthestPoint = p;
-                minDistance = _distance;
+                furthestDistance = _distanceToPoint;
             }
         }
+
+        Debug.DrawLine(transform.position, _furthestPoint.position, Color.cyan);
 
         return _furthestPoint;
     }

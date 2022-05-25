@@ -28,7 +28,7 @@ public class BossBehaviour_Revenant : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(Controller.IsActive == true)
+        if (Controller.IsActive == true)
         {
             GetPlayerInfo();
             UpdateBehaviour();
@@ -46,7 +46,8 @@ public class BossBehaviour_Revenant : MonoBehaviour
 
     private void UpdateBehaviour()
     {
-        if (Controller.InPhase2 == true)
+        if (Controller.InPhase2 == true && 
+            IsFiringSwarm == false)
         {
             // Only adds to swarm once phase 2 kicks in
             _swarmTimer += Time.deltaTime;
@@ -55,46 +56,71 @@ public class BossBehaviour_Revenant : MonoBehaviour
             {
                 _swarmTimer = 0f;
                 StartCoroutine(Controller.PhaseAttacks.FireMissileSwarm());
-
-                Debug.Log("Sending a missile swarm");
             }
         }
 
         // Adds to timers
-        _chargedShotTimer += Time.deltaTime;
-        _shotTimer += Time.deltaTime;
+
+        if(IsChargingUpShot == false ||
+            IsFiringSwarm == false)
+        {
+            _chargedShotTimer += Time.deltaTime;
+            _shotTimer += Time.deltaTime;
+        }
 
         if (_distanceToPlayer <= Controller.PhaseAttacks.AttackDistancePhase1)
         {
-            Debug.Log("Player is in range");
+            if((IsFiringSwarm == false ||
+            IsChargingUpShot == false)){
+                
+                //Debug.Log("Player is in range");
 
-            if(_shotTimer > Controller.PhaseAttacks.BasicAttackDelay)
-            {
-                _shotTimer = 0f;
-                Controller.PhaseAttacks.FireProjectile();
+                if (_shotTimer > Controller.PhaseAttacks.BasicAttackDelay &&
+                    IsFiringSwarm == false)
+                {
+                    _shotTimer = 0f;
+                    Controller.PhaseAttacks.FireProjectile();
 
-                Debug.Log("Shot the player with basic projectile");
-            }
+                    Debug.Log("Shot the player with basic projectile");
+                }
 
-            if(_chargedShotTimer >= Controller.PhaseAttacks.ChargedShotDelay)
-            {
-                _chargedShotTimer = 0f;
-                StartCoroutine(Controller.PhaseAttacks.FireChargedShot());
+                if (_chargedShotTimer >= Controller.PhaseAttacks.ChargedShotDelay &&
+                    IsFiringSwarm == false)
+                {
+                    _chargedShotTimer = 0f;
+                    StartCoroutine(Controller.PhaseAttacks.FireChargedShot());
 
-                Debug.Log("Charing the shot");
+                    Debug.Log("Charing the shot");
+                }
             }
         }
         else
         {
-            if(Controller.InPhase2 == true)
+            if( IsFiringSwarm == false)
             {
-                // Moves the boss to air positions
-                Controller.Movement.MoveToPosition(Controller.Movement.FindClosestAirPoint(Controller.Movement.AirMovementPositions));
+                if(IsChargingUpShot == false)
+                {
+                    if (Controller.InPhase2 == true)
+                    {
+                        // Moves the boss to air positions
+                        Controller.Movement.MoveToPosition(Controller.Movement.FindClosestAirPoint(Controller.Movement.AirMovementPositions));
+
+                        Debug.Log("Moving to air position");
+                    }
+                    else
+                    {
+                        // Moves the boss to ground positions
+                        Controller.Movement.MoveToPosition(Controller.Movement.FindClosestGroundPoint(Controller.Movement.GroundMovementPositions));
+
+                        Debug.Log("Moving to ground position");
+                    }
+                }
             }
             else
             {
-                // Moves the boss to ground positions
-                Controller.Movement.MoveToPosition(Controller.Movement.FindClosestGroundPoint(Controller.Movement.GroundMovementPositions));
+                Controller.Movement.MoveToPosition(Controller.Movement.FindFurthestAirPoint(Controller.Movement.AirMovementPositions));
+
+                Debug.Log("Moving to swarm position");
             }
         }
     }

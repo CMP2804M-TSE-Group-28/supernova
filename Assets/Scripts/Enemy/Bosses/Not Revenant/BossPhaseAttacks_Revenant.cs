@@ -8,6 +8,8 @@ public class BossPhaseAttacks_Revenant : MonoBehaviour
     [Header("Master Script")] public BossController_Revenant Controller;
 
     [Header("Components")] public Transform ShotOrigin;
+    public Transform SwarmOriginLeft;
+    public Transform SwarmOriginRight;
 
     [Header("General Stats")] public float AttackDistancePhase1;
     public float AttackDistancePhase2;
@@ -20,9 +22,6 @@ public class BossPhaseAttacks_Revenant : MonoBehaviour
     public float ChargedShotDelay;
 
     [Header("Phase 2 Attacks")] public float MissileSwarmDelay;
-
-    [HideInInspector] public bool IsPreformingSwarmAttack = false;
-    [HideInInspector] public bool IsChargingShot = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -40,6 +39,7 @@ public class BossPhaseAttacks_Revenant : MonoBehaviour
         _basicProjectile.GetComponent<ProjectileController>().Info.IsExplosiveType = BasicProjectile.IsExplosiveType;
         _basicProjectile.GetComponent<ProjectileController>().ProjectileSprite = BasicProjectile.ProjectileSprite;
         _basicProjectile.GetComponent<ProjectileController>().Info.Speed = BasicProjectile.Speed;
+        _basicProjectile.GetComponent<ProjectileController>().Info.IsTrackingPlayer = BasicProjectile.IsTrackingPlayer;
     }
 
     public IEnumerator FireChargedShot()
@@ -56,6 +56,7 @@ public class BossPhaseAttacks_Revenant : MonoBehaviour
         _chargedProjectile.GetComponent<ProjectileController>().Info.IsExplosiveType = ChargedProjectile.IsExplosiveType;
         _chargedProjectile.GetComponent<ProjectileController>().ProjectileSprite = ChargedProjectile.ProjectileSprite;
         _chargedProjectile.GetComponent<ProjectileController>().Info.Speed = ChargedProjectile.Speed;
+        _chargedProjectile.GetComponent<ProjectileController>().Info.IsTrackingPlayer = ChargedProjectile.IsTrackingPlayer;
 
         Controller.Behaviour.IsChargingUpShot = false;
 
@@ -64,9 +65,73 @@ public class BossPhaseAttacks_Revenant : MonoBehaviour
     
     public IEnumerator FireMissileSwarm()
     {
+        Debug.Log("Sending a missile swarm");
         Controller.Behaviour.IsFiringSwarm = true;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
+
+        int _projectileAmount = 8;
+        int _shotProjectiles = 0;
+
+        float _shotDelay = 1f;
+        float _shotDelaytimer = 0f;
+
+        bool _shotLeftSide = false;
+
+        while(_shotProjectiles < _projectileAmount)
+        {
+            _shotDelaytimer += Time.deltaTime;
+
+            Debug.Log("Timer: " + _shotDelaytimer);
+
+            if(_shotDelaytimer >= _shotDelay)
+            {
+                //Debug.Log("Firing swarm");
+
+                if(_shotLeftSide == false)
+                {
+                    _shotLeftSide = true;
+
+                    GameObject _swarmProjectile = Instantiate(SwarmProjectile.ProjectilePrefab, SwarmOriginRight.position, Quaternion.identity);
+
+                    _swarmProjectile.GetComponent<ProjectileMovement>().ShotOrigin = ShotOrigin;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.Damage = SwarmProjectile.Damage;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.ExplosionVFX = SwarmProjectile.ExplosionVFX;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsExplosiveType = SwarmProjectile.IsExplosiveType;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.ProjectileSprite = SwarmProjectile.ProjectileSprite;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.Speed = SwarmProjectile.Speed;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsTrackingPlayer = SwarmProjectile.IsTrackingPlayer;
+
+                    _shotProjectiles += 1;
+                    _shotDelaytimer = 0f;
+
+                    //Debug.Log("Swarm right side");
+                }
+                else
+                {
+                    _shotLeftSide = false;
+
+                    GameObject _swarmProjectile = Instantiate(SwarmProjectile.ProjectilePrefab, SwarmOriginLeft.position, Quaternion.identity);
+
+                    _swarmProjectile.GetComponent<ProjectileMovement>().ShotOrigin = ShotOrigin;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.Damage = SwarmProjectile.Damage;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.ExplosionVFX = SwarmProjectile.ExplosionVFX;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsExplosiveType = SwarmProjectile.IsExplosiveType;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.ProjectileSprite = SwarmProjectile.ProjectileSprite;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.Speed = SwarmProjectile.Speed;
+                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsTrackingPlayer = SwarmProjectile.IsTrackingPlayer;
+
+                    _shotProjectiles += 1;
+                    _shotDelaytimer = 0f;
+
+                    //Debug.Log("Swarm left side");
+                }
+            }
+
+            Debug.Log("Shot Projectiles: " + _shotProjectiles);
+        }
+
+        yield return new WaitForSeconds(4f);
 
         Controller.Behaviour.IsFiringSwarm = false;
 
