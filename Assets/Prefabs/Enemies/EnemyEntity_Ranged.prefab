@@ -101,11 +101,14 @@ MonoBehaviour:
   RangedChargedAttack: {fileID: 0}
   NavAgent: {fileID: 0}
   AIRigidbody: {fileID: 0}
+  HealthDrop: {fileID: 1001081556193704175, guid: d9cf51e9cc5c81e4ca2c7ba75d9bca38, type: 3}
+  AmmoDrop: {fileID: 9102143097737519286, guid: a57cc45f5f85f4a49b3e4de1704bef3c, type: 3}
   PlayerMask:
     serializedVersion: 2
     m_Bits: 8
   Health: 100
   Speed: 5
+  PickupDropChance: 69
   PlayerEntity: {fileID: 0}
   PlayerTarget: {fileID: 0}
   IsActive: 1
@@ -201,6 +204,7 @@ MonoBehaviour:
     Damage: 10
     DropRate: 0
     IsExplosiveType: 1
+    IsTrackingPlayer: 0
   AttackDistance: 10
   AttackDelay: 3
   AttackDamage: 10

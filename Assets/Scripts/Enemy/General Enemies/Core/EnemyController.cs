@@ -20,11 +20,15 @@ public class EnemyController : MonoBehaviour
     // Components
     [Header("Components")] public NavMeshAgent NavAgent;
     public Rigidbody AIRigidbody;
+    public GameObject HealthDrop;
+    public GameObject AmmoDrop;
+
     [Header("Layer Masks")] public LayerMask PlayerMask;
 
     // AI General Stats
     [Header("General Stats")] public float Health;
     public float Speed;
+    public float PickupDropChance;
 
     // Hidden public declarations
     [HideInInspector] public GameObject PlayerEntity;
@@ -108,6 +112,23 @@ public class EnemyController : MonoBehaviour
 
         if(Health <= 0)
         {
+            float _random = Random.Range(0f, 100f);
+            float _type = Random.Range(0f, 1f);
+
+            if(PickupDropChance <= _random)
+            {
+                if(_type <= 0.5f)
+                {
+                    GameObject _healthPickup = Instantiate(HealthDrop, transform.position, Quaternion.identity);
+                    Debug.Log("Health picked up");
+                }
+                else
+                {
+                    GameObject _ammoPickup = Instantiate(AmmoDrop, transform.position, Quaternion.identity);
+                    Debug.Log("Ammo picked up");
+                }
+            }
+
             // play death sound
             // call OpenDoor on door to end of game - second boss
             Destroy(this.gameObject);
