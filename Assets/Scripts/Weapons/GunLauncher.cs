@@ -19,9 +19,11 @@ public class GunLauncher : Weapon
     public AudioClip sfxShoot;
     public AudioClip sfxEmpty;
 
+    public int StartingAmmo = 25;
+
     private void Start()
     {
-        RemainingAmmo = 100;
+        RemainingAmmo = StartingAmmo;
         WeaponName = "Rocket Launcher";
         WeaponModel = _WeaponModel;
     }
@@ -45,7 +47,7 @@ public class GunLauncher : Weapon
             print("forward");
             print(transform.forward);
             
-            Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 500f);
+            Vector3 forward = cam.transform.TransformDirection(Vector3.forward * 750f);
             instanceBullet.GetComponent<Rigidbody>().AddForce(forward);
             
             // Update Remaining Ammo    

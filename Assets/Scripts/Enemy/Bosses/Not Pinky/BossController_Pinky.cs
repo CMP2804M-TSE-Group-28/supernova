@@ -23,6 +23,7 @@ public class BossController_Pinky : MonoBehaviour
 
     // PRIVATE DECLARATIONS
     private float _maxHealth;
+    [SerializeField] private GameObject arenaSwitch;
 
     // Start is called before the first frame update
     private void Start()
@@ -52,6 +53,7 @@ public class BossController_Pinky : MonoBehaviour
         // Destorys boss if health is 0 or less
         if (Health <= 0)
         {
+            arenaSwitch.SetActive(true);
             Destroy(transform.gameObject, 2f);
         }
 

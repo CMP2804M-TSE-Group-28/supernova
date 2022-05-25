@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309877, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -73,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7650904895381309879, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
       propertyPath: m_Name
-      value: Light Fixture (34)
+      value: Yellow Fixture
       objectReference: {fileID: 0}
     - target: {fileID: 7650904895381309882, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
       propertyPath: m_Mesh
