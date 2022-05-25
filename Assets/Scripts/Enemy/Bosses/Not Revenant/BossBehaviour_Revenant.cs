@@ -7,6 +7,9 @@ public class BossBehaviour_Revenant : MonoBehaviour
     // PUBLIC DECLARATIONS
     [Header("Master Script")] public BossController_Revenant Controller;
 
+    [HideInInspector] public bool IsChargingUpShot = false;
+    [HideInInspector] public bool IsFiringSwarm = false;
+
     // PRIVATE DECLARATIONS
     private Vector3 _playerPosition;
     private Vector3 _dirToPlayer;
@@ -51,6 +54,7 @@ public class BossBehaviour_Revenant : MonoBehaviour
             if(_swarmTimer >= Controller.PhaseAttacks.MissileSwarmDelay)
             {
                 _swarmTimer = 0f;
+                StartCoroutine(Controller.PhaseAttacks.FireMissileSwarm());
 
                 Debug.Log("Sending a missile swarm");
             }
@@ -67,6 +71,7 @@ public class BossBehaviour_Revenant : MonoBehaviour
             if(_shotTimer > Controller.PhaseAttacks.BasicAttackDelay)
             {
                 _shotTimer = 0f;
+                Controller.PhaseAttacks.FireProjectile();
 
                 Debug.Log("Shot the player with basic projectile");
             }
@@ -74,13 +79,14 @@ public class BossBehaviour_Revenant : MonoBehaviour
             if(_chargedShotTimer >= Controller.PhaseAttacks.ChargedShotDelay)
             {
                 _chargedShotTimer = 0f;
+                StartCoroutine(Controller.PhaseAttacks.FireChargedShot());
 
                 Debug.Log("Charing the shot");
             }
         }
         else
         {
-            if(Controller.IsAirborne == true)
+            if(Controller.InPhase2 == true)
             {
                 // Moves the boss to air positions
                 Controller.Movement.MoveToPosition(Controller.Movement.FindClosestAirPoint(Controller.Movement.AirMovementPositions));
