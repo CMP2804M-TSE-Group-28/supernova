@@ -50,10 +50,11 @@ MonoBehaviour:
   Info:
     ProjectilePrefab: {fileID: 3953065422662580863}
     ProjectileSprite: {fileID: 21300000, guid: 83b56a804a1ef1c40b366a3797c51d33, type: 3}
-    Speed: 0
-    Damage: 0
-    DropRate: 0
-    IsExplosiveType: 0
+    ExplosionVFX: {fileID: 0}
+    Speed: 5
+    Damage: 10
+    DropRate: 0.1
+    IsExplosiveType: 1
   Movement: {fileID: 0}
   ProjectileRigidbody: {fileID: 0}
   ProjectileSprite: {fileID: 21300000, guid: 83b56a804a1ef1c40b366a3797c51d33, type: 3}

@@ -5,15 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class ProjectileInfoEnemy
 {
-    [Header("Projectile Components")]
-    public GameObject ProjectilePrefab;
+    [Header("Projectile Components")] public GameObject ProjectilePrefab;
     public Sprite ProjectileSprite;
 
-    [Header("Projectile Stats")]
-    public float Speed;
+    [Header("Explosion VFX - Only if it's a explosive")] public GameObject ExplosionVFX;
+
+    [Header("Projectile Stats")] public float Speed;
     public int Damage;
     public float DropRate;
 
-    [Header("Projectile Type")]
-    public bool IsExplosiveType;
+    [Header("Projectile Type")] public bool IsExplosiveType;
 }

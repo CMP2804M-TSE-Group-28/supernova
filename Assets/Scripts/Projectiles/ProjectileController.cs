@@ -13,7 +13,12 @@ public class ProjectileController : MonoBehaviour
     public Sprite ProjectileSprite;
     public Transform SpritePlane;
 
+    // PRIVATE DELCARTIONS
     private Transform _playerPosition;
+    private bool _hasExploded;
+
+    private float _explosionDelayTimer = 0f;
+    private float _explodeDelay = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +33,8 @@ public class ProjectileController : MonoBehaviour
     private void Update()
     {
         SpritePlane.LookAt(_playerPosition);
+
+        _explosionDelayTimer += Time.deltaTime;
     }
 
     public void GetProjectileInfo(GameObject EntityFiring)
@@ -39,11 +46,46 @@ public class ProjectileController : MonoBehaviour
         ProjectileSprite = Info.ProjectileSprite;
     }
 
+    public void CreateExplosion()
+    {
+        GameObject _explosionVFX = Instantiate(Info.ExplosionVFX, transform.position, Quaternion.identity);
+
+        Collider[] _entitiesInBlast = Physics.OverlapSphere(transform.position, 3f);
+        foreach (var _collider in _entitiesInBlast)
+        {
+            if(_collider.gameObject.tag == "Player")
+            {
+                _collider.gameObject.GetComponent<Health>().TakeDamage(Info.Damage);
+            }
+            else if(_collider.gameObject.tag == "Enemy")
+            {
+                _collider.gameObject.GetComponent<EnemyController>().Health -= Info.Damage;
+            }
+        }
+
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(Info.IsExplosiveType == true)
         {
-            other.GetComponent<Health>().TakeDamage(Info.Damage);
+            if(_hasExploded == false &&
+                _explosionDelayTimer >= _explodeDelay)
+            {
+                _hasExploded = true;
+
+                CreateExplosion();
+            }
+        }
+        else
+        {
+            if (other.gameObject.tag == "Player")
+            {
+                other.GetComponent<Health>().TakeDamage(Info.Damage);
+            }
+
+            Destroy(gameObject);
         }
     }
 }
