@@ -1,6 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
+/// <summary>
+/// This is exclusively for the player at the moment,
+/// so stuff like killing is infering that its the player. 
+/// </summary>
 public class Health : MonoBehaviour
 {
     // This is the current value of the health#
@@ -18,22 +24,42 @@ public class Health : MonoBehaviour
     // The amount of damage one 
     public int interval = 1;
 
+    // Count of Deaths
+    public int deaths = 0;
+    
+    // This is the last respawn point set by the player.
+    public Transform LastSetRespawnPoint;
+    
+    // Store Player Transform
+    public Transform player;
+    
     /// <summary>
     /// Setup the basic health basics
     /// </summary>
     private void Start()
     {
         Value = startingHealth;
+        player = GetComponent<Transform>();
     }
 
     private void Update()
     {
         if (Value == 0)
         {
-            print("This entity is dead lol, handle some killing here...");
+            Regenerate();
+            print("The player has died.");
+            deaths += 1;
+            StartCoroutine(RespawnPlayerAtLastPointTheySet());
         }
     }
 
+    IEnumerator RespawnPlayerAtLastPointTheySet()
+    {
+        yield return new WaitForSeconds(3);
+        print($"Movin' and Groovin' the player to {LastSetRespawnPoint.position}");
+        player.position = LastSetRespawnPoint.position;
+    }
+    
     /// <summary>
     /// Takes damage from a player
     /// </summary>
