@@ -19,6 +19,8 @@ public class BulletController : MonoBehaviour
         }
         else if(other.gameObject.tag == "NotRevenant")
         {
+            other.gameObject.GetComponent<BossController_Revenant>().Health -= Damage;
+
             Debug.Log("Hit the not revenant");
         }
         else if(other.gameObject.tag == "NotPinky")
