@@ -7,6 +7,7 @@ public class WeaponsHolder : MonoBehaviour
 {
     public List<Weapon> weapons;
     public int currentWeaponIndex = 0;
+    public bool LauncherUnlocked = false;
 
     /// <summary>
     ///  Returns a pointer to the current selected weapon
@@ -48,14 +49,21 @@ public class WeaponsHolder : MonoBehaviour
 
     private void OnSwitchToRocketLauncher()
     {
-        // Log
-        print("Switching to Rocket Launcher");
-        
-        // Disable Last Weapon
-        CurrentWeapon.WeaponModel.SetActive(false);
-        
-        // Switch to New Weapon
-        currentWeaponIndex = 1;
-        CurrentWeapon.WeaponModel.SetActive(true);
+        if (LauncherUnlocked)
+        {
+            // Log
+            print("Switching to Rocket Launcher");
+
+            // Disable Last Weapon
+            CurrentWeapon.WeaponModel.SetActive(false);
+
+            // Switch to New Weapon
+            currentWeaponIndex = 1;
+            CurrentWeapon.WeaponModel.SetActive(true);
+        }
+        else
+        {
+            print("Hey! Get the rocket launcher first... You need to kill the first boss, which isn't Revenant");
+        }
     }
 }

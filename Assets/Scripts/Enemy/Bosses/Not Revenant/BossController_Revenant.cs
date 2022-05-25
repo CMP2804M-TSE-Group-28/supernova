@@ -10,6 +10,8 @@ public class BossController_Revenant : MonoBehaviour
     public BossPhaseAttacks_Revenant PhaseAttacks;
     public BossAnimator_Revenant Animator;
 
+    public WeaponsHolder weaponsHolder;
+
     [Header("Components")] public Rigidbody BossRigidbody;
 
     [Header("General Stats")] public float Health;
@@ -49,6 +51,7 @@ public class BossController_Revenant : MonoBehaviour
         // Destorys boss if health is 0 or less
         if(Health <= 0)
         {
+            weaponsHolder.LauncherUnlocked = true;
             Destroy(transform.gameObject, 2f);
         }
 
