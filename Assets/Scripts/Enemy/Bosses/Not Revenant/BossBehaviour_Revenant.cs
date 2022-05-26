@@ -15,7 +15,7 @@ public class BossBehaviour_Revenant : MonoBehaviour
     private Vector3 _dirToPlayer;
     private float _distanceToPlayer;
 
-    private float _swarmTimer = 0f;
+    private float _swarmTimer = 69f;
     private float _shotTimer = 0f;
     private float _chargedShotTimer = 0f;
 

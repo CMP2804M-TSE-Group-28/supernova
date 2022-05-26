@@ -13,6 +13,7 @@ public class BossController_Revenant : MonoBehaviour
     public WeaponsHolder weaponsHolder;
 
     [Header("Components")] public Rigidbody BossRigidbody;
+    public GameObject DeathSound;
 
     [Header("General Stats")] public float Health;
     [Range(25, 100)] public float Phase2HealthRequirement;
@@ -52,6 +53,7 @@ public class BossController_Revenant : MonoBehaviour
         // Destorys boss if health is 0 or less
         if(Health <= 0)
         {
+            GameObject _death = Instantiate(DeathSound, transform.position, Quaternion.identity);
             weaponsHolder.LauncherUnlocked = true;
             Destroy(transform.gameObject, 0.1f);
         }

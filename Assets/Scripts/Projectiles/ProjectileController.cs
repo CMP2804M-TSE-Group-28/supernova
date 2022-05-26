@@ -98,9 +98,12 @@ public class ProjectileController : MonoBehaviour
             if (other.gameObject.tag == "Player")
             {
                 other.GetComponent<Health>().TakeDamage(Info.Damage);
+                Destroy(gameObject);
             }
-
-            Destroy(gameObject);
+            else if(other.gameObject.tag == "Map")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

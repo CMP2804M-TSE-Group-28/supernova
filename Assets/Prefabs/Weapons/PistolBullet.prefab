@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 20
   HitFx: {fileID: 1334325485235772986, guid: 241a79262cde7df4bb90f0bda2ee08c9, type: 3}
+  HitSound: {fileID: 276737758782381748, guid: 5037235d98b2a8b4d8cfff191adce251, type: 3}
 --- !u!33 &6850039907522342731
 MeshFilter:
   m_ObjectHideFlags: 0

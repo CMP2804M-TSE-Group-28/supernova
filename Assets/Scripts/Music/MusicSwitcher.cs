@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicSwitcher : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class MusicSwitcher : MonoBehaviour
     public MusicController Controller;
 
     public string MusicName;
+
+    public string areaName;
+
+    public Text anOutput;
 
     void Start()
     {
@@ -19,6 +24,8 @@ public class MusicSwitcher : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             Controller.PlayMusic(MusicName, 1f);
+
+            anOutput.text = areaName;
         }
     }
 }
