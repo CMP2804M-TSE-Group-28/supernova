@@ -116,6 +116,8 @@ public class EnemyRanged : MonoBehaviour
                 // Take damage from player
                 Debug.Log("Hit the player - Ray");
 
+                Controller.ShootSound.Play();
+
                 // Needs player health function before we can substract their health
 
                 _rayHit.collider.gameObject.GetComponent<Health>().TakeDamage(AttackDamage);
@@ -150,6 +152,8 @@ public class EnemyRanged : MonoBehaviour
 
         if(Controller.CanChargeRangedAttack == true)
         {
+            Controller.ShootSound.Play();
+            Controller.ShootSound.pitch = 0.25f;
             // Sets projectile to charged projectile
             _projectile.GetComponent<ProjectileController>().Info.Damage *= Controller.RangedChargedAttack.ChargedDamageMultiplier;
             _projectile.GetComponent<ProjectileController>().Info.Speed *= Controller.RangedChargedAttack.ChargedMoveSpeedMultipler;
@@ -157,6 +161,9 @@ public class EnemyRanged : MonoBehaviour
         else
         {
             // Default projectile
+            Controller.ShootSound.Play();
+            Controller.ShootSound.pitch = 0.75f;
+
             _projectile.GetComponent<ProjectileController>().Info.Damage = Controller.Ranged.Info.Damage;
             _projectile.GetComponent<ProjectileController>().Info.Speed = Controller.Ranged.Info.Speed;
             _projectile.GetComponent<ProjectileController>().Info.DropRate = Controller.Ranged.Info.DropRate;

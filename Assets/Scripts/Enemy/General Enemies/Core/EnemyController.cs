@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyController : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class EnemyController : MonoBehaviour
     public Rigidbody AIRigidbody;
     public GameObject HealthDrop;
     public GameObject AmmoDrop;
+
+    public AudioSource ShootSound;
+    public AudioSource DeathSound;
 
     [Header("Layer Masks")] public LayerMask PlayerMask;
 
@@ -112,6 +116,8 @@ public class EnemyController : MonoBehaviour
 
         if(Health <= 0)
         {
+            DeathSound.Play();
+
             float _random = Random.Range(0f, 100f);
             float _type = Random.Range(0f, 1f);
 
@@ -131,7 +137,7 @@ public class EnemyController : MonoBehaviour
 
             // play death sound
             // call OpenDoor on door to end of game - second boss
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

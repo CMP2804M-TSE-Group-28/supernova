@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class BossController_Pinky : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class BossController_Pinky : MonoBehaviour
 
     [Header("Components")] public NavMeshAgent BossNavagent;
     public Rigidbody BossRigidbody;
+    public AudioSource DeathSound;
+    public AudioSource ChargeSound;
 
     [Header("General Stats")] public float Health;
     [Range(25, 100)] public float Phase2HealthRequirement;
@@ -53,6 +56,7 @@ public class BossController_Pinky : MonoBehaviour
         // Destorys boss if health is 0 or less
         if (Health <= 0)
         {
+            DeathSound.Play();
             arenaSwitch.SetActive(true);
             Destroy(transform.gameObject, 0.1f);
         }

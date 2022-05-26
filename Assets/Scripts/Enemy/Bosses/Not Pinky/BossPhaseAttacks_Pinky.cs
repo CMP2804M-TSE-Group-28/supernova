@@ -37,6 +37,7 @@ public class BossPhaseAttacks_Pinky : MonoBehaviour
     {
         Debug.Log("Preforming charge attack");
 
+        Controller.ChargeSound.Play();
         Controller.BossRigidbody.isKinematic = false;
         Controller.Behaviour.IsCharging = true;
         Controller.BossNavagent.isStopped = true;

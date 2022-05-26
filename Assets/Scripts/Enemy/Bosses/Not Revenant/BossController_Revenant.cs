@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BossController_Revenant : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class BossController_Revenant : MonoBehaviour
     public WeaponsHolder weaponsHolder;
 
     [Header("Components")] public Rigidbody BossRigidbody;
+    public AudioSource DeathSound;
 
     [Header("General Stats")] public float Health;
     [Range(25, 100)] public float Phase2HealthRequirement;
@@ -52,6 +54,7 @@ public class BossController_Revenant : MonoBehaviour
         // Destorys boss if health is 0 or less
         if(Health <= 0)
         {
+            DeathSound.Play();
             weaponsHolder.LauncherUnlocked = true;
             Destroy(transform.gameObject, 0.1f);
         }

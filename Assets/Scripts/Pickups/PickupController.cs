@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PickupController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PickupController : MonoBehaviour
 
     [Header("Components")] public Transform SpritePlane;
     public Sprite Sprite;
+    public AudioSource PickupSource;
 
     // PRIVATE DECLARATIONS
     private GameObject _playerEntity;
@@ -41,16 +43,19 @@ public class PickupController : MonoBehaviour
         {
             if (IsHealth)
             {
+                PickupSource.Play();
+
                 other.gameObject.GetComponent<Health>().Regenerate(Value);
-                Destroy(gameObject);
+                Destroy(gameObject, 0.5f);
             }
             else if (IsAmmo)
             {
+                PickupSource.Play();
+
                 _weaponHolder.GetComponent<WeaponsHolder>().weapons[0].GetComponent<GunPistol>().RemainingAmmo += Value;
                 _weaponHolder.GetComponent<WeaponsHolder>().weapons[1].GetComponent<GunLauncher>().RemainingAmmo += Value;
-                Destroy(gameObject);
+                Destroy(gameObject, 0.5f);
             }
-
             Debug.Log("Player entered");
         }
 
