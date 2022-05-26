@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This is exclusively for the player at the moment,
@@ -8,6 +9,9 @@ using UnityEngine;
 /// </summary>
 public class Health : MonoBehaviour
 {
+    public Text HealthText;
+    public Slider HealthSlider;
+
     // This is the current value of the health#
     private int hv;
     public int Value
@@ -49,6 +53,14 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
+        HealthText.text = Value.ToString();
+        HealthSlider.value = Value;
+
+        if(Value > 100)
+        {
+            Value = 100;
+        }
+
         if (Value == 0)
         {
             Regenerate();

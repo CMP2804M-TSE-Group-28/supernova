@@ -1,13 +1,20 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using Weapons;
+using UnityEngine.UI;
 
 public class WeaponsHolder : MonoBehaviour
 {
     public List<Weapon> weapons;
     public int currentWeaponIndex = 0;
     public bool LauncherUnlocked = false;
+
+    public Text AmmoText;
+    public Text Message;
+
+    private bool _firstTimeMessage = false;
 
     /// <summary>
     ///  Returns a pointer to the current selected weapon
@@ -31,6 +38,29 @@ public class WeaponsHolder : MonoBehaviour
         foreach (Weapon weapon in weapons)
         {
             print($"I'm {weapon.WeaponName} I have {weapon.RemainingAmmo} shots...");
+        }
+
+        Message.gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(currentWeaponIndex == 0)
+        {
+            AmmoText.text = weapons[0].GetComponent<GunPistol>().RemainingAmmo.ToString();
+        }
+        else
+        {
+            AmmoText.text = weapons[1].GetComponent<GunLauncher>().RemainingAmmo.ToString();
+        }
+
+        if(LauncherUnlocked == true)
+        {
+            if (_firstTimeMessage == false)
+            {
+                _firstTimeMessage = true;
+                StartCoroutine(DisplayMessage());
+            }
         }
     }
 
@@ -65,5 +95,14 @@ public class WeaponsHolder : MonoBehaviour
         {
             print("Hey! Get the rocket launcher first... You need to kill the first boss, which isn't Revenant");
         }
+    }
+
+    private IEnumerator DisplayMessage()
+    {
+        Message.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(4f);
+
+        Message.gameObject.SetActive(false);
     }
 }

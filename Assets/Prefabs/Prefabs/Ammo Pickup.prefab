@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsHealth: 0
   IsAmmo: 1
-  Value: 20
+  Value: 10
   SpritePlane: {fileID: 9102143099170905374}
   Sprite: {fileID: 21300000, guid: 361f0876d0f4dc54396a16dabc94a98b, type: 3}
   PickupSource: {fileID: 6791386845591172320}
