@@ -54,7 +54,7 @@ public class BossController_Pinky : MonoBehaviour
         if (Health <= 0)
         {
             arenaSwitch.SetActive(true);
-            Destroy(transform.gameObject, 2f);
+            Destroy(transform.gameObject, 0.1f);
         }
 
         // Enters the 2 phase if bosses health is under a specific precentage and if it's not in phase 2 already

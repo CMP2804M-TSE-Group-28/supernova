@@ -48,11 +48,12 @@ public class BossController_Revenant : MonoBehaviour
 
     private void HealthChecks()
     {
+        Debug.Log("HEALTH CHECKED");
         // Destorys boss if health is 0 or less
         if(Health <= 0)
         {
             weaponsHolder.LauncherUnlocked = true;
-            Destroy(transform.gameObject, 2f);
+            Destroy(transform.gameObject, 0.1f);
         }
 
         // Enters the 2 phase if bosses health is under a specific precentage and if it's not in phase 2 already
