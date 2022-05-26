@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7093613459743991121
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7650904895381309876, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309877, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309877, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.9800415
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309878, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309879, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_Name
+      value: Yellow Fixture
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309882, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650904895381309883, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aa12efa96fb8ef94c88cd3efb789ee14, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ada2ef7aa8ab7a4f9aa631c61e181f0, type: 3}
