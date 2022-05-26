@@ -29,6 +29,29 @@ public class BossPhaseAttacks_Revenant : MonoBehaviour
         Controller = GetComponent<BossController_Revenant>();
     }
 
+    private void InstantiateSwarmProjecile()
+    {
+        GameObject _swarmProjectileR = Instantiate(SwarmProjectile.ProjectilePrefab, SwarmOriginRight.position, Quaternion.identity);
+
+        _swarmProjectileR.GetComponent<ProjectileMovement>().ShotOrigin = ShotOrigin;
+        _swarmProjectileR.GetComponent<ProjectileController>().Info.Damage = SwarmProjectile.Damage;
+        _swarmProjectileR.GetComponent<ProjectileController>().Info.ExplosionVFX = SwarmProjectile.ExplosionVFX;
+        _swarmProjectileR.GetComponent<ProjectileController>().Info.IsExplosiveType = SwarmProjectile.IsExplosiveType;
+        _swarmProjectileR.GetComponent<ProjectileController>().Info.ProjectileSprite = SwarmProjectile.ProjectileSprite;
+        _swarmProjectileR.GetComponent<ProjectileController>().Info.Speed = SwarmProjectile.Speed;
+        _swarmProjectileR.GetComponent<ProjectileController>().Info.IsTrackingPlayer = SwarmProjectile.IsTrackingPlayer;
+
+        GameObject _swarmProjectileL = Instantiate(SwarmProjectile.ProjectilePrefab, SwarmOriginLeft.position, Quaternion.identity);
+
+        _swarmProjectileL.GetComponent<ProjectileMovement>().ShotOrigin = ShotOrigin;
+        _swarmProjectileL.GetComponent<ProjectileController>().Info.Damage = SwarmProjectile.Damage;
+        _swarmProjectileL.GetComponent<ProjectileController>().Info.ExplosionVFX = SwarmProjectile.ExplosionVFX;
+        _swarmProjectileL.GetComponent<ProjectileController>().Info.IsExplosiveType = SwarmProjectile.IsExplosiveType;
+        _swarmProjectileL.GetComponent<ProjectileController>().Info.ProjectileSprite = SwarmProjectile.ProjectileSprite;
+        _swarmProjectileL.GetComponent<ProjectileController>().Info.Speed = SwarmProjectile.Speed;
+        _swarmProjectileL.GetComponent<ProjectileController>().Info.IsTrackingPlayer = SwarmProjectile.IsTrackingPlayer;
+    }
+
     public void FireProjectile()
     {
         GameObject _basicProjectile = Instantiate(BasicProjectile.ProjectilePrefab, ShotOrigin.position, Quaternion.identity);
@@ -70,68 +93,23 @@ public class BossPhaseAttacks_Revenant : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
 
-        int _projectileAmount = 8;
-        int _shotProjectiles = 0;
+        InstantiateSwarmProjecile();
+        yield return new WaitForSeconds(0.5f);
 
-        float _shotDelay = 1f;
-        float _shotDelaytimer = 0f;
+        InstantiateSwarmProjecile();
+        yield return new WaitForSeconds(0.5f);
 
-        bool _shotLeftSide = false;
+        InstantiateSwarmProjecile();
+        yield return new WaitForSeconds(0.5f);
 
-        while(_shotProjectiles < _projectileAmount)
-        {
-            _shotDelaytimer += Time.deltaTime;
+        InstantiateSwarmProjecile();
+        yield return new WaitForSeconds(0.5f);
 
-            Debug.Log("Timer: " + _shotDelaytimer);
+        InstantiateSwarmProjecile();
+        yield return new WaitForSeconds(0.5f);
 
-            if(_shotDelaytimer >= _shotDelay)
-            {
-                //Debug.Log("Firing swarm");
-
-                if(_shotLeftSide == false)
-                {
-                    _shotLeftSide = true;
-
-                    GameObject _swarmProjectile = Instantiate(SwarmProjectile.ProjectilePrefab, SwarmOriginRight.position, Quaternion.identity);
-
-                    _swarmProjectile.GetComponent<ProjectileMovement>().ShotOrigin = ShotOrigin;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.Damage = SwarmProjectile.Damage;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.ExplosionVFX = SwarmProjectile.ExplosionVFX;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsExplosiveType = SwarmProjectile.IsExplosiveType;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.ProjectileSprite = SwarmProjectile.ProjectileSprite;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.Speed = SwarmProjectile.Speed;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsTrackingPlayer = SwarmProjectile.IsTrackingPlayer;
-
-                    _shotProjectiles += 1;
-                    _shotDelaytimer = 0f;
-
-                    //Debug.Log("Swarm right side");
-                }
-                else
-                {
-                    _shotLeftSide = false;
-
-                    GameObject _swarmProjectile = Instantiate(SwarmProjectile.ProjectilePrefab, SwarmOriginLeft.position, Quaternion.identity);
-
-                    _swarmProjectile.GetComponent<ProjectileMovement>().ShotOrigin = ShotOrigin;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.Damage = SwarmProjectile.Damage;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.ExplosionVFX = SwarmProjectile.ExplosionVFX;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsExplosiveType = SwarmProjectile.IsExplosiveType;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.ProjectileSprite = SwarmProjectile.ProjectileSprite;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.Speed = SwarmProjectile.Speed;
-                    _swarmProjectile.GetComponent<ProjectileController>().Info.IsTrackingPlayer = SwarmProjectile.IsTrackingPlayer;
-
-                    _shotProjectiles += 1;
-                    _shotDelaytimer = 0f;
-
-                    //Debug.Log("Swarm left side");
-                }
-            }
-
-            Debug.Log("Shot Projectiles: " + _shotProjectiles);
-        }
-
-        yield return new WaitForSeconds(4f);
+        InstantiateSwarmProjecile();
+        yield return new WaitForSeconds(2f);
 
         Controller.Behaviour.IsFiringSwarm = false;
 

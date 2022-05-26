@@ -198,15 +198,15 @@ MonoBehaviour:
   IsProjectile: 1
   Info:
     ProjectilePrefab: {fileID: 3953065422662580863, guid: f7523d691ff263346badec0df07269b4, type: 3}
-    ProjectileSprite: {fileID: 21300000, guid: 83b56a804a1ef1c40b366a3797c51d33, type: 3}
+    ProjectileSprite: {fileID: 21300000, guid: 50a61d68248a2714a8e4d8ba531cdfb5, type: 3}
     ExplosionVFX: {fileID: 5082596456169652276, guid: cdf514f649f3aaf40ae73ef806ca1149, type: 3}
-    Speed: 10
+    Speed: 30
     Damage: 10
-    DropRate: 0
-    IsExplosiveType: 1
+    DropRate: 0.1
+    IsExplosiveType: 0
     IsTrackingPlayer: 0
-  AttackDistance: 10
-  AttackDelay: 3
+  AttackDistance: 20
+  AttackDelay: 1
   AttackDamage: 10
   AccuracySpread: 1
 --- !u!1 &4791655518973770501

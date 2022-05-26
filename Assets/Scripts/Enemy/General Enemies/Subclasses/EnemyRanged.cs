@@ -133,7 +133,7 @@ public class EnemyRanged : MonoBehaviour
 
     public void ShootThePlayerProjectile()
     {
-        ShotOrigin.LookAt(Controller.PlayerTarget);
+        //ShotOrigin.LookAt(Controller.PlayerTarget);
 
         // Insantiates the projectile
         GameObject _projectile = Instantiate(Controller.Ranged.Info.ProjectilePrefab,

@@ -41,21 +41,16 @@ public class EnemyMelee : MonoBehaviour
     public void MeleeThePlayer()
     {
         // Preforms a charged melee attack
-        if(Controller.CanChargeMeleeAttack == true)
+        if(Controller.MeleeChargedAttack.AttackIsCharged == true)
         {
-            if(Controller.MeleeChargedAttack.AttackIsCharged == true)
-            {
-                // Resets the melee charged attack
-                Controller.MeleeChargedAttack.ChargeAttackExecuted();
+            // Resets the melee charged attack
+            Controller.MeleeChargedAttack.ChargeAttackExecuted();
 
-                // Scales the damage according to the charge
-                AttackDamage *= Controller.MeleeChargedAttack.ChargedDamageMultiplier;
+            // Scales the damage according to the charge
+            // Take players health
+            Controller.PlayerEntity.GetComponent<Health>().TakeDamage(AttackDamage * Controller.MeleeChargedAttack.ChargedDamageMultiplier);
 
-                // Take players health
-                Controller.PlayerEntity.GetComponent<Health>().TakeDamage(AttackDamage);
-
-                Debug.Log("Hit a charged melee attack");
-            }
+            Debug.Log("Hit a charged melee attack");
         }
         // Preforms a default melee attack
         else

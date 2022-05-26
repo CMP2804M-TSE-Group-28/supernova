@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7208925706688696037}
   m_Layer: 2
   m_Name: BasicProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,12 +49,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
     ProjectilePrefab: {fileID: 3953065422662580863}
-    ProjectileSprite: {fileID: 21300000, guid: 83b56a804a1ef1c40b366a3797c51d33, type: 3}
+    ProjectileSprite: {fileID: 21300000, guid: 50a61d68248a2714a8e4d8ba531cdfb5, type: 3}
     ExplosionVFX: {fileID: 0}
     Speed: 5
     Damage: 10
     DropRate: 0.1
     IsExplosiveType: 1
+    IsTrackingPlayer: 0
   Movement: {fileID: 0}
   ProjectileRigidbody: {fileID: 0}
   ProjectileSprite: {fileID: 21300000, guid: 83b56a804a1ef1c40b366a3797c51d33, type: 3}
@@ -173,7 +174,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 83b56a804a1ef1c40b366a3797c51d33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50a61d68248a2714a8e4d8ba531cdfb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -15,17 +15,19 @@ public class BulletController : MonoBehaviour
 
             other.gameObject.GetComponent<EnemyController>().Health -= Damage;
 
-            Destroy(this.gameObject, 0.1f);
+            Destroy(gameObject);
         }
         else if(other.gameObject.tag == "NotRevenant")
         {
             other.gameObject.GetComponent<BossController_Revenant>().Health -= Damage;
+            Destroy(gameObject);
 
             Debug.Log("Hit the not revenant");
         }
         else if(other.gameObject.tag == "NotPinky")
         {
             other.gameObject.GetComponent<BossController_Pinky>().Health -= Damage;
+            Destroy(gameObject);
 
             Debug.Log("Hit the not pinky");
         }
@@ -34,7 +36,7 @@ public class BulletController : MonoBehaviour
             Debug.Log("Hit a wall");
 
             GameObject _wallHitFX = Instantiate(HitFx, transform.position, transform.rotation);
-            Destroy(this.gameObject, 0.1f);
+            Destroy(gameObject);
         }
     }
 }

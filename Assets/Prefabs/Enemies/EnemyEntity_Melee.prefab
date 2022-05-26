@@ -108,7 +108,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   Health: 100
-  Speed: 2
+  Speed: 4
   PickupDropChance: 69
   PlayerEntity: {fileID: 0}
   PlayerTarget: {fileID: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   AttackDistance: 2
-  AttackDelay: 3
+  AttackDelay: 1
   AttackDamage: 10
 --- !u!114 &7867217619340390036
 MonoBehaviour:
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   ChargeDelayBetweenCharges: 10
-  ChargedChargeUpTime: 3
+  ChargedChargeUpTime: 2
   ChargedDamageMultiplier: 2
   AttackIsCharged: 0
   ChargingUpAttack: 0
