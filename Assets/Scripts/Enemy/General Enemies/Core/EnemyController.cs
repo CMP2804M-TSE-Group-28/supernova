@@ -24,8 +24,8 @@ public class EnemyController : MonoBehaviour
     public GameObject HealthDrop;
     public GameObject AmmoDrop;
 
+    public GameObject DeathSound;
     public AudioSource ShootSound;
-    public AudioSource DeathSound;
 
     [Header("Layer Masks")] public LayerMask PlayerMask;
 
@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour
 
         if(Health <= 0)
         {
-            DeathSound.Play();
+            GameObject _death = Instantiate(DeathSound, transform.position, Quaternion.identity);
 
             float _random = Random.Range(0f, 100f);
             float _type = Random.Range(0f, 1f);

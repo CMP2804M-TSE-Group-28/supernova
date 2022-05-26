@@ -127,7 +127,7 @@ MonoBehaviour:
   PhaseAttacks: {fileID: 0}
   BossNavagent: {fileID: 0}
   BossRigidbody: {fileID: 0}
-  DeathSound: {fileID: -3821039822641682613}
+  DeathSound: {fileID: 4141785263393421032, guid: df231f35e601d154284789d2f47a35a1, type: 3}
   ChargeSound: {fileID: 8901883635293487820}
   Health: 2400
   Phase2HealthRequirement: 100

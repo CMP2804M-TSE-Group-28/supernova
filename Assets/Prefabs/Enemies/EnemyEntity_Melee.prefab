@@ -105,8 +105,8 @@ MonoBehaviour:
   AIRigidbody: {fileID: 0}
   HealthDrop: {fileID: 1001081556193704175, guid: d9cf51e9cc5c81e4ca2c7ba75d9bca38, type: 3}
   AmmoDrop: {fileID: 9102143097737519286, guid: a57cc45f5f85f4a49b3e4de1704bef3c, type: 3}
+  DeathSound: {fileID: 4141785263393421032, guid: df231f35e601d154284789d2f47a35a1, type: 3}
   ShootSound: {fileID: 0}
-  DeathSound: {fileID: 7275478540117011075}
   PlayerMask:
     serializedVersion: 2
     m_Bits: 8

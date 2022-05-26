@@ -344,7 +344,7 @@ MonoBehaviour:
   Animator: {fileID: 0}
   weaponsHolder: {fileID: 0}
   BossRigidbody: {fileID: 0}
-  DeathSound: {fileID: -1815354201122920300}
+  DeathSound: {fileID: 4141785263393421032, guid: df231f35e601d154284789d2f47a35a1, type: 3}
   Health: 600
   Phase2HealthRequirement: 50
   InPhase2: 0

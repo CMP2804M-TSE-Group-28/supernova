@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class BulletController : MonoBehaviour
 {
     [Header("Stats & FX")] public float Damage;
     public GameObject HitFx;
+    public GameObject HitSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,12 +15,14 @@ public class BulletController : MonoBehaviour
         {
             Debug.Log("Hit an enemy");
 
+            GameObject _hit = Instantiate(HitSound, transform.position, Quaternion.identity);
             other.gameObject.GetComponent<EnemyController>().Health -= Damage;
 
             Destroy(gameObject);
         }
         else if(other.gameObject.tag == "NotRevenant")
         {
+            GameObject _hit = Instantiate(HitSound, transform.position, Quaternion.identity);
             other.gameObject.GetComponent<BossController_Revenant>().Health -= Damage;
             Destroy(gameObject);
 
@@ -26,6 +30,7 @@ public class BulletController : MonoBehaviour
         }
         else if(other.gameObject.tag == "NotPinky")
         {
+            GameObject _hit = Instantiate(HitSound, transform.position, Quaternion.identity);
             other.gameObject.GetComponent<BossController_Pinky>().Health -= Damage;
             Destroy(gameObject);
 

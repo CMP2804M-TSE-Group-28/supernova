@@ -14,7 +14,7 @@ public class BossController_Pinky : MonoBehaviour
 
     [Header("Components")] public NavMeshAgent BossNavagent;
     public Rigidbody BossRigidbody;
-    public AudioSource DeathSound;
+    public GameObject DeathSound;
     public AudioSource ChargeSound;
 
     [Header("General Stats")] public float Health;
@@ -56,7 +56,7 @@ public class BossController_Pinky : MonoBehaviour
         // Destorys boss if health is 0 or less
         if (Health <= 0)
         {
-            DeathSound.Play();
+            GameObject _death = Instantiate(DeathSound, transform.position, Quaternion.identity);
             arenaSwitch.SetActive(true);
             Destroy(transform.gameObject, 0.1f);
         }
