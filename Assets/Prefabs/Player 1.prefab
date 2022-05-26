@@ -82,6 +82,10 @@ MonoBehaviour:
   audioSrc: {fileID: 4289531489071781658}
   sfxShoot: {fileID: 8300000, guid: df00953418eec3d4c8ace44eb57983dc, type: 3}
   sfxEmpty: {fileID: 8300000, guid: 8df18035789447040be4f7e6a58f127d, type: 3}
+  StartingAmmo: 200
+  TTF: 0.33
+  coolDown: 0
+  canFire: 1
 --- !u!1 &4289531489071781654
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +137,7 @@ MonoBehaviour:
   - {fileID: 4289531488953771941}
   - {fileID: 4289531488953771941}
   currentWeaponIndex: 0
+  LauncherUnlocked: 0
 --- !u!114 &4289531489071781657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,9 +927,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launcher
       objectReference: {fileID: 0}
+    - target: {fileID: 5967103889979804021, guid: 4e0fa228aca7650498346c2282efba45, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7380971125579966768, guid: 4e0fa228aca7650498346c2282efba45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e0fa228aca7650498346c2282efba45, type: 3}
