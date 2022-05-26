@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 /// <summary>
 /// This is exclusively for the player at the moment,
